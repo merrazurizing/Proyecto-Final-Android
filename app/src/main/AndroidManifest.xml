@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.k_medica">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KMedica">
-        <activity android:name=".RegistroMedicoActivity"></activity>
+        <activity android:name=".InicioMedico"></activity>
+        <activity android:name=".RegistroMedico" />
+        <activity android:name=".IngresoMedico" />
+        <activity android:name=".LoginMedico" />
+        <activity android:name=".RegistroMedicoActivity" />
         <activity android:name=".RegistrationPacienteActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".StartActivity">

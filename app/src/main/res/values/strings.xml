@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">K-Medica</string>
+    <string name="ingreso"> Ingresar</string>
+    <string name="registro"> Registrar </string>
+    <string name="bienvenido"> Bienvenido </string>
+    <string name="run"> RUN </string>
+    <string name="contrasena"> Contraseña</string>
+    <string name="inresoMedico"> Ingreso de Usuario</string>
+    <string name="mail">e-mail</string>
+    <string name="especialidad"> Especialidad</string>
+    <string name="nombre">Nombre</string>
+    <string name="ubicacionConsulta">Ubicación consulta</string>
+    <string name="RegistrarUsuario">Registrar Usuario</string>
+
+
 </resources>
