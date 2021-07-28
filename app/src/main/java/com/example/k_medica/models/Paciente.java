@@ -127,6 +127,7 @@ public class Paciente extends RealmObject {
     public void setId(int id) {
         this.id = id;
     }
+
     /*metodo para generar el id correlativo de forma automática*/
     public int getNextKey() {
         try {

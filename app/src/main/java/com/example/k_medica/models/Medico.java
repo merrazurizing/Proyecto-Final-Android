@@ -4,7 +4,7 @@ import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Usuario extends RealmObject {
+public class Medico extends RealmObject {
 
     @PrimaryKey
     private String rut;
@@ -18,10 +18,10 @@ public class Usuario extends RealmObject {
     /*nuevo atributo para saber si es que fue enviado o no a la bd remota*/
     private boolean sendBd;
 
-    public Usuario() {
+    public Medico() {
     }
 
-    public Usuario(String rut, String nombre, String contraseña, String email, String especialidad, String ubicacion, int id, boolean sendBd) {
+    public Medico(String rut, String nombre, String contraseña, String email, String especialidad, String ubicacion, int id, boolean sendBd) {
         this.rut = rut;
         this.nombre = nombre;
         this.contraseña = contraseña;
@@ -32,7 +32,7 @@ public class Usuario extends RealmObject {
         this.sendBd = sendBd;
     }
 
-    public Usuario(String rut, String nombre, String contraseña, String email, String especialidad, String ubicacion, int id) {
+    public Medico(String rut, String nombre, String contraseña, String email, String especialidad, String ubicacion, int id) {
         this.rut = rut;
         this.nombre = nombre;
         this.contraseña = contraseña;
@@ -42,7 +42,7 @@ public class Usuario extends RealmObject {
         this.id = id;
     }
 
-    public Usuario(String rut, String nombre, String contraseña, String email, String especialidad, String ubicacion, boolean sendBd) {
+    public Medico(String rut, String nombre, String contraseña, String email, String especialidad, String ubicacion, boolean sendBd) {
         this.rut = rut;
         this.nombre = nombre;
         this.contraseña = contraseña;
@@ -120,11 +120,12 @@ public class Usuario extends RealmObject {
         this.id = id;
     }
     /*metodo para generar el id correlativo de forma automática*/
+
     public int getNextKey() {
         try {
             Realm realm = Realm.getDefaultInstance();
             /* se consulta por el id max actual guardado*/
-            Number number = realm.where(Usuario.class).max("id");
+            Number number = realm.where(Medico.class).max("id");
             if (number != null) {
                 return number.intValue() + 1;
             } else {

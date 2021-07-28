@@ -1,12 +1,10 @@
 package com.example.k_medica;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -23,7 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.k_medica.models.Usuario;
+import com.example.k_medica.models.Medico;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,8 +33,6 @@ import java.util.Map;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
-
-import static com.example.k_medica.IngresoMedico.ACESS_ID;
 
 public class RegistroMedico extends AppCompatActivity {
 
@@ -68,6 +64,7 @@ public class RegistroMedico extends AppCompatActivity {
         runMedico = findViewById(R.id.registroMedico_run);
         contrasenaMedico = findViewById(R.id.registroMedico_contrasena);
         mailMedico = findViewById(R.id.registroMedico_mail);
+        btnRegistrar = findViewById(R.id.registroMedico_btnRegistrar);
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,18 +147,17 @@ public class RegistroMedico extends AppCompatActivity {
     private void guardarEnRealm(String nombre,String run, String contrasena, String email,String especialidad, String ubicacion){
             mRealm = Realm.getDefaultInstance();
 
-            Usuario usuario = new Usuario(nombre, run, contrasena, email, especialidad, ubicacion, false);
+            Medico usuario = new Medico(nombre, run, contrasena, email, especialidad, ubicacion, false);
             //Accion_Usuario accion = new Accion_Usuario(run,"Registro");
 
             mRealm.beginTransaction();
             mRealm.insertOrUpdate(usuario);
-            //mRealm.insertOrUpdate(accion);
             mRealm.commitTransaction();
             SyncbdRemote();
     }
 
     private void SyncbdRemote(){
-        RealmResults<Usuario> ListadoNoSync=mRealm.where(Usuario.class).equalTo("sendBD",false).findAll();
+        RealmResults<Medico> ListadoNoSync=mRealm.where(Medico.class).equalTo("sendBD",false).findAll();
         if(ListadoNoSync.size()>0){
             for(int i=0;i<ListadoNoSync.size();i++){
                 String nombre = ListadoNoSync.get(i).getNombre();
@@ -170,7 +166,6 @@ public class RegistroMedico extends AppCompatActivity {
                 String mail = ListadoNoSync.get(i).getEmail();
                 String especialidad = ListadoNoSync.get(i).getEspecialidad();
                 String ubicacion = ListadoNoSync.get(i).getUbicacion();
-
                 InsertOrUpdate(nombre,run,contrasena,mail,especialidad,ubicacion);
             }
         }
@@ -183,8 +178,6 @@ public class RegistroMedico extends AppCompatActivity {
 
         dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
-
-
 
         Map<String, String> params = new HashMap<String, String>();
 
@@ -236,7 +229,7 @@ public class RegistroMedico extends AppCompatActivity {
 
     private void  UpdateEnviado(String run){
         mRealm.beginTransaction();
-        Usuario usuario = mRealm.where(Usuario.class).equalTo("run",run).findFirst();
+        Medico usuario = mRealm.where(Medico.class).equalTo("run",run).findFirst();
         assert usuario!=null;
         usuario.setSendBd(true);
         mRealm.commitTransaction();
@@ -245,6 +238,12 @@ public class RegistroMedico extends AppCompatActivity {
 
     public void sendInicioMedico(){
         Intent intent = new Intent(RegistroMedico.this, InicioMedico.class);
+
+        Bundle b =new Bundle();
+        b.putString("nombre",nombreMedico.getText().toString());
+        b.putString("run",runMedico.getText().toString());
+        intent.putExtras(b);
+
         startActivity(intent);
     }
 

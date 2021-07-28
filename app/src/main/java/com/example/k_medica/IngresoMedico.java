@@ -2,6 +2,7 @@ package com.example.k_medica;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -95,11 +96,10 @@ public class IngresoMedico extends AppCompatActivity {
                             if (status.equals("success")) {
 
                                 if(run.equals(mensaje.getString("rutUsuario")) && contrasena.equals(mensaje.getString("contrasenaUsuario"))){
-                                    System.out.println("RUT RESPONSE:" + mensaje.getString("rutUsuario"));
-                                    //sendLoging();
-                                }else{
-                                    //sendMainActivity();
 
+                                    sendInicioMedico(mensaje.getString("rutUsuario"),mensaje.getString("nombreUsuario"));
+                                }else{
+                                    Toast.makeText(getApplicationContext(), "Usuario o Contraseña incorrectos", Toast.LENGTH_SHORT).show();;
                                 }
                             }
                         } catch (JSONException e) {
@@ -117,5 +117,16 @@ public class IngresoMedico extends AppCompatActivity {
 
         queue.add(jsonReque);
 
+    }
+
+    private void sendInicioMedico(String run, String nombre){
+        Intent intent = new Intent(IngresoMedico.this, InicioMedico.class);
+
+        Bundle b =new Bundle();
+        b.putString("nombre",nombre);
+        b.putString("run",run);
+        intent.putExtras(b);
+
+        startActivity(intent);
     }
 }

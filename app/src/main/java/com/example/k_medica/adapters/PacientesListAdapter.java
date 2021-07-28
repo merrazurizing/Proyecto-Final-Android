@@ -12,27 +12,28 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.k_medica.R;
+import com.example.k_medica.models.Paciente;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuariosListAsapter extends RecyclerView.Adapter<UsuariosListAsapter.ViewHolder> {
+public class PacientesListAdapter extends RecyclerView.Adapter<PacientesListAdapter.ViewHolder> {
 
 
-    List<Nota_Usuario> ShowList;
+    List<Paciente> ShowList;
     Context context;
     int position;
     private OnItemClickListener itemClickListener;
 
 
-    public UsuariosListAsapter(List<Nota_Usuario> showList, OnItemClickListener itemClickListener) {
+    public PacientesListAdapter(List<Paciente> showList, OnItemClickListener itemClickListener) {
         ShowList = showList;
         this.itemClickListener = itemClickListener;
     }
 
     @NonNull
     @Override
-    public UsuariosListAsapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PacientesListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_usuario,parent,false);
 
@@ -44,7 +45,7 @@ public class UsuariosListAsapter extends RecyclerView.Adapter<UsuariosListAsapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UsuariosListAsapter.ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull PacientesListAdapter.ViewHolder viewHolder, final int i) {
         /*se pasa a cada uno de los elementos el evento listener junto con el respectivo elemento*/
 
         viewHolder.bind(ShowList.get(i), itemClickListener,i);
@@ -56,7 +57,7 @@ public class UsuariosListAsapter extends RecyclerView.Adapter<UsuariosListAsapte
         return ShowList.size();
     }
     /*Se remplaza el listado*/
-    public void updateList(ArrayList<Nota_Usuario> data) {
+    public void updateList(ArrayList<Paciente> data) {
         ShowList = data;
         notifyDataSetChanged();
     }
@@ -77,23 +78,23 @@ public class UsuariosListAsapter extends RecyclerView.Adapter<UsuariosListAsapte
 
         }
 
-        public void bind(final Nota_Usuario notaUsuario, final OnItemClickListener listener,final int i){
+        public void bind(final Paciente paciente, final OnItemClickListener listener,final int i){
 
+          textNombre.setText(paciente.getNombre());
 
-
-            textNombre.setText(notaUsuario.getNombre());
-
+            /*
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.OnItemClick(notaUsuario,getAdapterPosition());
+                    listener.OnItemClick(paciente,getAdapterPosition());
                 }
             });
+          */
 
             botonEliminar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.OnDeleteClick(notaUsuario, getAdapterPosition());
+                    listener.OnDeleteClick(paciente, getAdapterPosition());
 
                 }
             });
@@ -101,8 +102,8 @@ public class UsuariosListAsapter extends RecyclerView.Adapter<UsuariosListAsapte
         }
     }
     public interface OnItemClickListener {
-        void OnItemClick(Nota_Usuario notaUsuario, int position);
-        void OnDeleteClick(Nota_Usuario notaUsuario, int position);
+        /*void OnItemClick(Paciente paciente, int position);*/
+        void OnDeleteClick(Paciente paciente, int position);
     }
 
     public void removeItem(int position) {
