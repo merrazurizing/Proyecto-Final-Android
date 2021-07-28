@@ -23,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.k_medica.models.Usuario;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -147,20 +148,16 @@ public class RegistroMedico extends AppCompatActivity {
     }
 
     private void guardarEnRealm(String nombre,String run, String contrasena, String email,String especialidad, String ubicacion){
-
-
             mRealm = Realm.getDefaultInstance();
 
-            Usuario usuario = new Usuario(nombre,run,password,false);
-            Accion_Usuario accion = new Accion_Usuario(run,"Registro");
+            Usuario usuario = new Usuario(nombre, run, contrasena, email, especialidad, ubicacion, false);
+            //Accion_Usuario accion = new Accion_Usuario(run,"Registro");
 
             mRealm.beginTransaction();
             mRealm.insertOrUpdate(usuario);
-            mRealm.insertOrUpdate(accion);
+            //mRealm.insertOrUpdate(accion);
             mRealm.commitTransaction();
             SyncbdRemote();
-
-
     }
 
     private void SyncbdRemote(){
@@ -168,9 +165,9 @@ public class RegistroMedico extends AppCompatActivity {
         if(ListadoNoSync.size()>0){
             for(int i=0;i<ListadoNoSync.size();i++){
                 String nombre = ListadoNoSync.get(i).getNombre();
-                String run = ListadoNoSync.get(i).getRun();
-                String contrasena = ListadoNoSync.get(i).getPassword();
-                String mail = ListadoNoSync.get(i).getMail();
+                String run = ListadoNoSync.get(i).getRut();
+                String contrasena = ListadoNoSync.get(i).getContraseña();
+                String mail = ListadoNoSync.get(i).getEmail();
                 String especialidad = ListadoNoSync.get(i).getEspecialidad();
                 String ubicacion = ListadoNoSync.get(i).getUbicacion();
 
@@ -241,7 +238,7 @@ public class RegistroMedico extends AppCompatActivity {
         mRealm.beginTransaction();
         Usuario usuario = mRealm.where(Usuario.class).equalTo("run",run).findFirst();
         assert usuario!=null;
-        usuario.setSendBD(true);
+        usuario.setSendBd(true);
         mRealm.commitTransaction();
         sendInicioMedico();
     }

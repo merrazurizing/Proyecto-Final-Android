@@ -89,7 +89,6 @@ public class InicioMedico extends AppCompatActivity {
 
 
             }
-            recyclerView.
             recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             recyclerView.setItemAnimator(new DefaultItemAnimator());
             recyclerView.setAdapter(adapter);
