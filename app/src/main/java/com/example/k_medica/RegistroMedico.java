@@ -28,7 +28,9 @@ import org.json.JSONObject;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.realm.Realm;
@@ -114,7 +116,10 @@ public class RegistroMedico extends AppCompatActivity {
             contrasenaMedico.setError("La contraseña es obligatoria");
         }else if(TextUtils.isEmpty(runMedico.getText())){
             runMedico.setError("El RUN es obligatorio");
-        }else if(TextUtils.isEmpty(mailMedico.getText())){
+        }else if(Utilidades.validarRut(runMedico.getText().toString())){
+            runMedico.setError("El RUN es inválido");
+        }
+        else if(TextUtils.isEmpty(mailMedico.getText())){
             mailMedico.setError("El e-mail es obligatorio");
         }else if(TextUtils.isEmpty(spinnerEspecialidad.getSelectedItem().toString())){
             //spinnerEspecialidad.setError("La contraseña es obligatorio");
@@ -137,21 +142,29 @@ public class RegistroMedico extends AppCompatActivity {
     }
 
     private boolean estaRegistrado(String run){
+        System.out.println(run);
         mRealm = Realm.getDefaultInstance();
         Medico medico = new Medico();
-        medico =mRealm.where(Medico.class).equalTo("rut",run).findFirst();
+        medico = mRealm.where(Medico.class).equalTo("rut",run).findFirst();
+        System.out.println( medico != null ? "hay medico" : "no hay");
+        List<Medico> listaMedico=new ArrayList(mRealm.where(Medico.class).findAll());
+
+        System.out.println(listaMedico);
+
         return medico != null ? true : false;
+
+
 
 
     }
 
     private void guardarEnRealm(String nombre,String run, String contrasena, String email,String especialidad, String ubicacion){
-            mRealm = Realm.getDefaultInstance();
+
+        mRealm = Realm.getDefaultInstance();
 
             System.out.println(nombre+" "+run+" "+contrasena+" "+email+" "+especialidad+" "+ubicacion);
 
-            Medico usuario = new Medico(nombre, run, contrasena, email, especialidad, ubicacion, false);
-
+            Medico usuario = new Medico( run,nombre, contrasena, email, especialidad, ubicacion, false);
 
             mRealm.beginTransaction();
             mRealm.insertOrUpdate(usuario);
