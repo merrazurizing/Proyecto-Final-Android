@@ -95,9 +95,9 @@ public class IngresoMedico extends AppCompatActivity {
 
                             if (status.equals("success")) {
 
-                                if(run.equals(mensaje.getString("rutUsuario")) && contrasena.equals(mensaje.getString("contrasenaUsuario"))){
+                                if(run.equals(mensaje.getString("run_medico")) && contrasena.equals(mensaje.getString("contrasena"))){
 
-                                    sendInicioMedico(mensaje.getString("rutUsuario"),mensaje.getString("nombreUsuario"));
+                                    sendInicioMedico(mensaje.getString("run_medico"),mensaje.getString("nombre_medico"));
                                 }else{
                                     Toast.makeText(getApplicationContext(), "Usuario o Contraseña incorrectos", Toast.LENGTH_SHORT).show();;
                                 }
