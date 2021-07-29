@@ -41,7 +41,7 @@ public class RegistroMedico extends AppCompatActivity {
     private Button btnRegistrar;
     Realm mRealm;
 
-    public static final String URL_BASE ="";
+    public static final String URL_BASE ="http://abascur.cl/android/android_5/api/";
     public static final String ACESS_ID="";
 
 
@@ -172,27 +172,22 @@ public class RegistroMedico extends AppCompatActivity {
     }
 
 
-    @SuppressLint("NewApi")
-    private void InsertOrUpdate(final String nombre, final String run, final String contrasena, final String mail, final String especialidad, final String ubicacion){
-        DateTimeFormatter dtf = null;
 
-        dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
+    private void InsertOrUpdate(final String nombre, final String run, final String contrasena, final String mail, final String especialidad, final String ubicacion){
+
 
         Map<String, String> params = new HashMap<String, String>();
 
-        params.put("rutUsuario", String.valueOf(run));
-        params.put("nombreUsuario", String.valueOf(nombre));
+        params.put("run_medico", String.valueOf(run));
+        params.put("nombre", String.valueOf(nombre));
         params.put("contrasenaUsuario", String.valueOf(contrasena));
-        params.put("especialidadUsuario", especialidad);
-        params.put("ubicacionUsuario", ubicacion);
+        params.put("especialidad", especialidad);
+        params.put("ubicacion", ubicacion);
+        params.put("contrasena",contrasena);
 
-        params.put("fechaHoraCreacion",dtf.format(now));
-
-        params.put("idAcceso",ACESS_ID);
         Toast.makeText(getApplicationContext(), params.toString() , Toast.LENGTH_SHORT).show();
 
-        String URL = URL_BASE+"InsertOrUpdateUsuario";
+        String URL = URL_BASE+"InsertOrUpdateMedico";
         //Toast.makeText(getApplicationContext(), URL , Toast.LENGTH_SHORT).show();
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
         System.out.println("URL "+URL);
