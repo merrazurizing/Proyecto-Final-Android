@@ -65,6 +65,7 @@ public  class Utilidades {
     }
 
     static public boolean validarRut(String rut){
+        rut = rut.split("-")[0];
         int suma=0;
         String dvR,dvT;
         int[] serie = {2,3,4,5,6,7};
