@@ -9,8 +9,8 @@ public class Paciente extends RealmObject {
     @PrimaryKey
     private String nombre;
     private String rut;
+    private String correo;
     private String fecha_nacimiento;
-    private String motivo_consulta;
     private String prevision_salud;
     private String ocupacion;
     private String direccion;
@@ -20,12 +20,11 @@ public class Paciente extends RealmObject {
 
     public Paciente() {
     }
-
-    public Paciente(String nombre, String rut, String fecha_nacimiento, String motivo_consulta, String prevision_salud, String ocupacion, String direccion, int id, boolean sendBd) {
+    public Paciente(String nombre, String rut, String correo, String fecha_nacimiento, String prevision_salud, String direccion, String ocupacion, int id, boolean sendBd) {
         this.rut = rut;
         this.nombre = nombre;
+        this.correo = correo;
         this.fecha_nacimiento = fecha_nacimiento;
-        this.motivo_consulta = motivo_consulta;
         this.prevision_salud = prevision_salud;
         this.ocupacion = ocupacion;
         this.direccion = direccion;
@@ -33,22 +32,22 @@ public class Paciente extends RealmObject {
         this.sendBd = sendBd;
     }
 
-    public Paciente(String nombre, String rut, String fecha_nacimiento, String motivo_consulta, String prevision_salud, String ocupacion, String direccion, int id) {
+    public Paciente(String nombre, String rut, String correo, String fecha_nacimiento, String prevision_salud, String direccion, String ocupacion, int id) {
         this.rut = rut;
         this.nombre = nombre;
+        this.correo = correo;
         this.fecha_nacimiento = fecha_nacimiento;
-        this.motivo_consulta = motivo_consulta;
         this.prevision_salud = prevision_salud;
         this.ocupacion = ocupacion;
         this.direccion = direccion;
         this.id = id;
     }
 
-    public Paciente(String nombre, String rut, String fecha_nacimiento, String motivo_consulta, String prevision_salud, String ocupacion, String direccion, boolean sendBd) {
+    public Paciente(String nombre, String rut, String correo, String fecha_nacimiento, String prevision_salud, String direccion, String ocupacion, boolean sendBd) {
         this.rut = rut;
         this.nombre = nombre;
+        this.correo = correo;
         this.fecha_nacimiento = fecha_nacimiento;
-        this.motivo_consulta = motivo_consulta;
         this.prevision_salud = prevision_salud;
         this.ocupacion = ocupacion;
         this.direccion = direccion;
@@ -80,12 +79,16 @@ public class Paciente extends RealmObject {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    public String getMotivo_consulta() {
-        return motivo_consulta;
+    public String getCorreo() {
+        return correo;
     }
 
     public void setMotivo_consulta(String motivo_consulta) {
-        this.motivo_consulta = motivo_consulta;
+        this.correo = motivo_consulta;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getPrevision_salud() {

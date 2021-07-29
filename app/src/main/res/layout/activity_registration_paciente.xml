@@ -56,6 +56,23 @@
         android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
+        android:id="@+id/text3"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Correo"
+        android:textColor="@color/colorBlue"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/edit3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="marcelo@gmail.com"
+        android:textColor="@color/colorPrimaryDark"/>
+
+    <TextView
         android:id="@+id/text4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -70,22 +87,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="DD-MM-AAAA"
-        android:textColor="@color/colorPrimaryDark"/>
-
-    <TextView
-        android:id="@+id/text5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Motivo de consulta"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/colorBlue"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
-
-    <EditText
-        android:id="@+id/edit5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
