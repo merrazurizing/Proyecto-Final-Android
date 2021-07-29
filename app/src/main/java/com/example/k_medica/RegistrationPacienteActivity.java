@@ -36,6 +36,9 @@ public class RegistrationPacienteActivity extends AppCompatActivity {
     private Button btnGuardar;
     Realm mRealm;
 
+    public static final String URL_BASE ="";
+    public static final String ACESS_ID="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,18 +119,17 @@ public class RegistrationPacienteActivity extends AppCompatActivity {
         LocalDateTime now = LocalDateTime.now();
 
 
-    /*
         Map<String, String> params = new HashMap<String, String>();
 
-        params.put("rutUsuario", String.valueOf(run));
+        params.put("rutUsuario", String.valueOf(rut));
         params.put("nombreUsuario", String.valueOf(nombre));
-        params.put("contrasenaUsuario", String.valueOf(contrasena));
-        params.put("especialidadUsuario", especialidad);
-        params.put("ubicacionUsuario", ubicacion);
-
-        params.put("fechaHoraCreacion",dtf.format(now));
-
+        params.put("fechaNacimiento", String.valueOf(fecha_nacimiento));
+        params.put("motivoConsulta", motivo_consulta);
+        params.put("ubicacionUsuario", prevision_salud);
+        params.put("ocupacion", ocupacion);
+        params.put("direccion", direccion);
         params.put("idAcceso",ACESS_ID);
+
         Toast.makeText(getApplicationContext(), params.toString() , Toast.LENGTH_SHORT).show();
 
         String URL = URL_BASE+"InsertOrUpdateUsuario";
@@ -145,7 +147,7 @@ public class RegistrationPacienteActivity extends AppCompatActivity {
                             String status = response.getString("status");
                             String mensaje = response.getString("mensaje");
                             if (status.equals("success")) {
-                                UpdateEnviado(run);
+                                UpdateEnviado(rut);
                             }
                         } catch (JSONException e) {
                             System.out.println("Catch");
@@ -163,7 +165,6 @@ public class RegistrationPacienteActivity extends AppCompatActivity {
         });
 
         queue.add(jsonReque);
-        */
 
     }
 
