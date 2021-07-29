@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -82,7 +84,7 @@ public class InicioMedico extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogAgregarNota(null);
+                //DialogAgregarNota(null);
             }
         });
 
@@ -92,11 +94,11 @@ public class InicioMedico extends AppCompatActivity {
         adapter = new PacientesListAdapter(listaPaciente, new PacientesListAdapter.OnItemClickListener() {
 
 
-            @Override
-            public void OnItemClick(Nota_Usuario notaUsuario, int position) {
-                DialogAgregarNota(notaUsuario);
+
+            public void OnItemClick(/*Nota_Usuario notaUsuario,*/ int position) {
+                //DialogAgregarNota(notaUsuario);
             }
-*
+
             @Override
             public void OnDeleteClick(Paciente paciente, int position) {
                 //Toast.makeText(getApplicationContext(),"itemDelete:"+alumno.getNombre(),Toast.LENGTH_LONG).show();
@@ -129,6 +131,26 @@ public class InicioMedico extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
     }
+
+    //Metodo para mostrar y ocultar el menú
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.overflow_menu,menu);
+        return true;
+    }
+
+    //metodo para asignar las funciones correspondientes a las opciones
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        if(id == R.id.item_1){
+            Toast.makeText(this,"Agregar Cerrar Sesión", Toast.LENGTH_SHORT);
+        }else if(id == R.id.item_2){
+            Toast.makeText(this,"Opcion 2", Toast.LENGTH_SHORT);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     //acá se podrían enviar a una actividad o fragment nuevo, lo dejo a tu criterio
     //private void DialogAgregarNota(Nota_Usuario notaUsuario) {    }
 

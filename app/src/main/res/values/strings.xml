@@ -13,4 +13,7 @@
     <string name="RegistrarUsuario">Registrar Usuario</string>
 
 
+    <!--String del Menú-->
+    <string name="opcion1">Cerrar Sesión</string>
+    <string name="opcion2">Ejemplo</string>
 </resources>

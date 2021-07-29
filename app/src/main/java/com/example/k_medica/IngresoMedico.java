@@ -80,7 +80,7 @@ public class IngresoMedico extends AppCompatActivity {
 
 
         // Toast.makeText(getApplicationContext(), params.toString() , Toast.LENGTH_SHORT).show();
-        String URL = URL_BASE+"GetUsuario";
+        String URL = URL_BASE+"GetAllMedico";
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
         JsonObjectRequest jsonReque = new JsonObjectRequest(Request.Method.POST, URL, new JSONObject(params),
