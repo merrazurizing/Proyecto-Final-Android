@@ -1,0 +1,3383 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+
+    <!-- Required meta tags -->
+
+    <meta charset="utf-8">
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Guía rápida ApiRcv</title>
+
+    <meta name="google" content="notranslate" />
+
+<link rel="shortcut icon" href="https://cdn1.iconfinder.com/data/icons/material-design-icons-light/24/xml-128.png">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+
+
+
+
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+
+<style media="screen">
+
+html, body {
+
+    max-width: 100%;
+
+    overflow-x: hidden;
+
+}
+
+.footer {
+
+ position:fixed;
+
+ left:0px;
+
+ bottom:0px;
+
+ height:30px;
+
+ width:100%;
+
+ background:#999;
+
+}
+
+
+
+.header img {
+
+  float: left;
+
+  width: 30px;
+
+  margin-top: 10px;
+
+}
+
+
+
+.header h1 {
+
+  position: relative;
+
+  top: 18px;
+
+  left: 10px;
+
+}
+
+.header{
+
+  margin-left: 100px;
+
+}
+
+
+
+</style>
+
+<div class="header">
+
+  <img src="img/iconRcv.png" alt="logo" />
+
+<h1 class="display-4">Guía rápida ApiRcv</h1>
+
+</div>
+
+<br>
+
+
+
+    <!-- Nav tabs -->
+
+    <ul class="nav nav-tabs" role="tablist">
+
+
+
+      <li class="nav-item">
+
+        <a class="nav-link active" data-toggle="tab" href="#Metodos" role="tab">Métodos</a>
+
+      </li>
+
+      <li class="nav-item">
+
+        <a class="nav-link" data-toggle="tab" href="#codeError" role="tab">Códigos Error</a>
+
+      </li>
+
+    </ul>
+
+
+
+    <!-- Tab panes -->
+
+    <div class="tab-content">
+
+
+
+    <div class="tab-pane active" id="Metodos" role="tabpanel">
+
+      <div class="bd-example">
+
+  <div class="row">
+
+    <div class="col-3">
+
+      <!-- Nav tabs -->
+
+      <ul class="nav nav-pills flex-column" role="tablist">
+
+        <li class="nav-item">
+
+          <a class="nav-link active" data-toggle="tab" href="#f1" role="tab">Insertar o Editar un usuario</a>
+
+        </li>
+
+        <li class="nav-item">
+
+          <a class="nav-link" data-toggle="tab" href="#f12" role="tab">Eliminar un usuario</a>
+
+        </li>
+
+        <li class="nav-item">
+
+          <a class="nav-link " data-toggle="tab" href="#f8" role="tab">Listar usuarios</a>
+
+        </li>
+
+        <li class="nav-item">
+
+          <a class="nav-link" data-toggle="tab" href="#f2" role="tab">Obtener información usuario</a>
+
+        </li>
+
+        <li class="nav-item">
+
+          <a class="nav-link active" data-toggle="tab" href="#f1" role="tab">Insertar o Editar una nota</a>
+
+        </li>
+
+        <li class="nav-item">
+
+          <a class="nav-link" data-toggle="tab" href="#f12" role="tab">Eliminar una nota</a>
+
+        </li>
+
+        <li class="nav-item">
+
+          <a class="nav-link " data-toggle="tab" href="#f8" role="tab">Listar notas</a>
+
+        </li>
+
+        <li class="nav-item">
+
+          <a class="nav-link" data-toggle="tab" href="#f2" role="tab">Obtener información nota</a>
+
+        </li>
+
+
+      </ul>
+
+    </div>
+
+    <div class="col-9">
+
+      <!-- Tab panes -->
+
+      <div class="tab-content">
+
+        <div class="tab-pane active" id="f1" role="tabpanel">
+
+        <br>
+
+        <div class="row">
+
+          <div class="col-sm-2">
+
+            <h4>URL : </h4>
+
+          </div>
+
+          <div class="col-sm-3">
+
+            <p class="font-italic">abascur.cl/apiRcv/InsertNewUser</p>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-sm-2">
+
+            <h4>MétodoHTTP : </h4>
+
+          </div>
+
+          <div class="col-sm-1">
+
+            <p class="font-italic">POST</p>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-sm-2">
+
+            <h4>Descripción: </h4>
+
+          </div>
+
+          <div class="col-sm-4">
+
+            <p class="font-italic">Método para insertar un nuevo usuario en Evitapp Sedentarismo</p>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-sm-2">
+
+            <h4>Tipo aplicación: </h4>
+
+          </div>
+
+          <div class="col-sm-4">
+
+            <p class="font-italic"> Evitapp Sedentarismo</p>
+
+          </div>
+
+        </div>
+
+          <div class="row">
+
+  <div class="col-sm-5">
+
+    <div class="card">
+
+      <div class="card-block">
+
+        <h3 class="card-title">Ejemplo JSON Consulta</h3>
+
+        <pre class="prettyprint">
+
+        <code >
+
+                {
+
+                "rutUsuario":"77777777-7",
+
+                "nomreUsuario":"Juana juanita",
+
+                "edadUsuario":"25",
+
+                "correoUsuario":"bgonzales@medicina.ucsc.cl",
+
+                "contrasenaUsuario":"1234",
+
+                "sexoUsuario":"M",
+
+                "carreraUsuario":"Enfermería",
+
+                "periodo":"30",
+
+                "NumeroMinutosDia":"12",
+
+                "frecuenciaEstimada":"3.33",
+
+                "tipoApp":"sedentarismo"
+
+                }
+
+      </code>
+
+    </pre>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-sm-5">
+
+    <div class="card">
+
+      <div class="card-block">
+
+        <h3 class="card-title">Ejemplo JSON Respuesta Éxito</h3>
+
+        <pre class="prettyprint">
+
+        <code >
+
+          {
+
+          "status": "success",
+
+          "mensaje": "Se inserto De Forma Correcta"
+
+          }
+
+        </code>
+
+        </pre>
+
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-block">
+
+        <h3 class="card-title">Ejemplo JSON Respuesta Error</h3>
+
+        <pre class="prettyprint">
+
+        <code >
+
+          {
+
+          	"status": "Error 000",
+
+          	"mensaje": "No se agrego JSON"
+
+          }
+
+
+
+          /*Para más tipos de respuestas de error, ver pestaña "Códigos Error" */
+
+        </code>
+
+        </pre>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+<div class="tab-pane" id="f12" role="tabpanel">
+
+<br>
+
+<div class="row">
+
+  <div class="col-sm-2">
+
+    <h4>URL : </h4>
+
+  </div>
+
+  <div class="col-sm-3">
+
+    <p class="font-italic">abascur.cl/apiRcv/InsertNewUser</p>
+
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-sm-2">
+
+    <h4>MétodoHTTP : </h4>
+
+  </div>
+
+  <div class="col-sm-1">
+
+    <p class="font-italic">POST</p>
+
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-sm-2">
+
+    <h4>Descripción: </h4>
+
+  </div>
+
+  <div class="col-sm-4">
+
+    <p class="font-italic">Método para insertar un nuevo usuario en Evitapp Tabaquismo</p>
+
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-sm-2">
+
+    <h4>Tipo aplicación: </h4>
+
+  </div>
+
+  <div class="col-sm-4">
+
+    <p class="font-italic">Evitapp Tabaquismo</p>
+
+  </div>
+
+</div>
+
+  <div class="row">
+
+<div class="col-sm-5">
+
+<div class="card">
+
+<div class="card-block">
+
+<h3 class="card-title">Ejemplo JSON Consulta</h3>
+
+<pre class="prettyprint">
+
+<code >
+
+        {
+
+        "rutUsuario":"77777777-7",
+
+        "nomreUsuario":"Juana juanita",
+
+        "edadUsuario":"25",
+
+        "correoUsuario":"bgonzales@medicina.ucsc.cl",
+
+        "contrasenaUsuario":"1234",
+
+        "sexoUsuario":"M",
+
+        "carreraUsuario":"Enfermería",
+
+        "periodo":"30",
+
+        "NumeroCigarrosDia":"12",
+
+        "frecuenciaEstimada":"3.33",
+
+        "tipoApp":"tabaquismo"
+
+        }
+
+</code>
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-sm-5">
+
+<div class="card">
+
+<div class="card-block">
+
+<h3 class="card-title">Ejemplo JSON Respuesta Éxito</h3>
+
+<pre class="prettyprint">
+
+<code >
+
+  {
+
+  "status": "success",
+
+  "mensaje": "Se inserto De Forma Correcta"
+
+  }
+
+</code>
+
+</pre>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-block">
+
+<h3 class="card-title">Ejemplo JSON Respuesta Error</h3>
+
+<pre class="prettyprint">
+
+<code >
+
+  {
+
+    "status": "Error 000",
+
+    "mensaje": "No se agrego JSON"
+
+  }
+
+
+
+  /*Para más tipos de respuestas de error, ver pestaña "Códigos Error" */
+
+</code>
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="tab-pane" id="f8" role="tabpanel">
+
+<br>
+
+<div class="row">
+
+  <div class="col-sm-2">
+
+    <h4>URL : </h4>
+
+  </div>
+
+  <div class="col-sm-3">
+
+    <p class="font-italic">abascur.cl/apiRcv/UpdateInfoUser</p>
+
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-sm-2">
+
+    <h4>MétodoHTTP : </h4>
+
+  </div>
+
+  <div class="col-sm-1">
+
+    <p class="font-italic">POST</p>
+
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-sm-2">
+
+    <h4>Descripción: </h4>
+
+  </div>
+
+  <div class="col-sm-4">
+
+    <p class="font-italic">Método para modificar información de un usuario</p>
+
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-sm-2">
+
+    <h4>Tipo aplicación: </h4>
+
+  </div>
+
+  <div class="col-sm-4">
+
+    <p class="font-italic">Evitapp Tabaquismo y Evitapp Sedentarismo</p>
+
+  </div>
+
+</div>
+
+  <div class="row">
+
+<div class="col-sm-5">
+
+<div class="card">
+
+<div class="card-block">
+
+<h3 class="card-title">Ejemplo JSON Consulta</h3>
+
+<pre class="prettyprint">
+
+<code >
+
+        {
+
+        "rutUsuario":"77777777-7",
+
+        "nomreUsuario":"Juana juanita",
+
+        "edadUsuario":"25",
+
+        "correoUsuario":"bgonzales@medicina.ucsc.cl",
+
+        "contrasenaUsuario":"1234"
+
+        }
+
+</code>
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-sm-5">
+
+<div class="card">
+
+<div class="card-block">
+
+<h3 class="card-title">Ejemplo JSON Respuesta Éxito</h3>
+
+<pre class="prettyprint">
+
+<code >
+
+  {
+
+  "status": "success",
+
+  "mensaje": "Se Actualizó De Forma Correcta"
+
+  }
+
+</code>
+
+</pre>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-block">
+
+<h3 class="card-title">Ejemplo JSON Respuesta Error</h3>
+
+<pre class="prettyprint">
+
+<code >
+
+  {
+
+    "status": "Error 000",
+
+    "mensaje": "No se agrego JSON"
+
+  }
+
+
+
+  /*Para más tipos de respuestas de error, ver pestaña "Códigos Error" */
+
+</code>
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+        <div class="tab-pane" id="f2" role="tabpanel">
+
+          <br>
+
+          <div class="row">
+
+            <div class="col-sm-2">
+
+              <h4>URL : </h4>
+
+            </div>
+
+            <div class="col-sm-3">
+
+              <p class="font-italic">abascur.cl/apiRcv/GetInfoUser</p>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-2">
+
+              <h4>MétodoHTTP : </h4>
+
+            </div>
+
+            <div class="col-sm-1">
+
+              <p class="font-italic">POST</p>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-2">
+
+              <h4>Descripción: </h4>
+
+            </div>
+
+            <div class="col-sm-4">
+
+              <p class="font-italic">Método para Obtener la información de un usuario específico</p>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-2">
+
+              <h4>Tipo aplicación: </h4>
+
+            </div>
+
+            <div class="col-sm-4">
+
+              <p class="font-italic">Evitapp Tabaquismo y Evitapp Sedentarismo</p>
+
+            </div>
+
+          </div>
+
+            <div class="row">
+
+    <div class="col-sm-4">
+
+      <div class="card">
+
+        <div class="card-block">
+
+          <h3 class="card-title">Ejemplo JSON Consulta</h3>
+
+          <pre class="prettyprint">
+
+          <code >
+
+            {
+
+            "rutUsuario":"18291683-8",
+
+            "tipoApp":"sedentarismo"
+
+            }
+
+
+
+        </code>
+
+      </pre>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-sm-6">
+
+      <div class="card">
+
+        <div class="card-block">
+
+          <h3 class="card-title">Ejemplo JSON Respuesta Éxito</h3>
+
+          <pre class="prettyprint">
+
+          <code >
+
+            {
+
+            	"status": "success",
+
+            	"mensaje": {
+
+            		"rutUsuario": "18291683-8",
+
+            		"nombreUsuario": "Antonio Bascur Q.",
+
+            		"correoUsuario": "abascur@ing.ucsc.cl",
+
+            		"sexoUsuario": "M",
+
+            		"edadUsuario": 26,
+
+            		"passUsuario": "1234",
+
+            		"carreraUsuario": "Ingeniería Civil Informática",
+
+            		"testActivo": 0,
+
+            		"rutaImgUsuario": "uploads\/img_perfil_18291683-8.jpg",
+
+            		"minutosDiarios": 14.286,
+
+            		"periodoEstimacion": 30,
+
+            		"frecuenciaEstimada": 3.33,
+
+            		"imgMetafora": 8,
+
+            		"fechaInfo": "2018-01-05"
+
+            	}
+
+            }
+
+          </code>
+
+          </pre>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <div class="card-block">
+
+          <h3 class="card-title">Ejemplo JSON Respuesta Error</h3>
+
+          <pre class="prettyprint">
+
+          <code >
+
+            {
+
+            	"status": "Error 000",
+
+            	"mensaje": "No se agrego JSON"
+
+            }
+
+
+
+            /*Para más tipos de respuestas de error, ver pestaña "Códigos Error" */
+
+          </code>
+
+          </pre>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+        </div>
+
+        <div class="tab-pane" id="f3" role="tabpanel">
+
+          <br>
+
+          <div class="row">
+
+            <div class="col-sm-2">
+
+              <h4>URL : </h4>
+
+            </div>
+
+            <div class="col-sm-3">
+
+              <p class="font-italic">abascur.cl/apiRcv/GetInfoAllUserTabaquismo</p>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-2">
+
+              <h4>MétodoHTTP : </h4>
+
+            </div>
+
+            <div class="col-sm-1">
+
+              <p class="font-italic">GET</p>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-2">
+
+              <h4>Descripción: </h4>
+
+            </div>
+
+            <div class="col-sm-4">
+
+              <p class="font-italic">Método para listar todos los usuarios registrados en Evitapp Tabaquismo</p>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-2">
+
+              <h4>Tipo aplicación: </h4>
+
+            </div>
+
+            <div class="col-sm-4">
+
+              <p class="font-italic">Evitapp Tabaquismo </p>
+
+            </div>
+
+          </div>
+
+            <div class="row">
+
+    <div class="col-sm-3">
+
+      <div class="card">
+
+        <div class="card-block">
+
+          <h3 class="card-title">Ejemplo JSON Consulta</h3>
+
+          <pre class="prettyprint">
+
+          <code >
+
+                  /*Sin JSON*/
+
+        </code>
+
+      </pre>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-sm-7">
+
+      <div class="card">
+
+        <div class="card-block">
+
+          <h3 class="card-title">Ejemplo JSON Respuesta Éxito</h3>
+
+          <pre class="prettyprint">
+
+          <code >
+
+            {
+
+    "status": "success",
+
+    "mensaje": [
+
+      {
+
+        "rutUsuario": "11964824-6",
+
+        "nombreUsuario": "pedro",
+
+        "correoUsuario": "prossel@ucsc.cl",
+
+        "sexoUsuario": "M",
+
+        "edadUsuario": 45,
+
+        "passUsuario": "1234",
+
+        "carreraUsuario": "Ingeniería Civil Informática",
+
+        "testActivo": 0,
+
+        "rutaImgUsuario": "uploads\/img_perfil_11964824-6.jpg",
+
+        "imgBase64": "\/9j\/4AAQSkZJRgAB....", // imagen en base64  (Cortado)
+
+        "idMetafora": 14
+
+      },
+
+      {
+
+        "rutUsuario": "18291683-8",
+
+        "nombreUsuario": "Antonio Bascur Q.",
+
+        "correoUsuario": "abascur@ing.ucsc.cl",
+
+        "sexoUsuario": "M",
+
+        "edadUsuario": 26,
+
+        "passUsuario": "1234",
+
+        "carreraUsuario": "Ingeniería Civil Informática",
+
+        "testActivo": 0,
+
+        "rutaImgUsuario": "uploads\/img_perfil_18291683-8.jpg",
+
+        "imgBase64": "\/9j\/4AAQSkZJR...." // imagen en base64 (Cortado)
+
+      }]
+
+
+
+          </code>
+
+          </pre>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <div class="card-block">
+
+          <h3 class="card-title">Ejemplo JSON Respuesta Error</h3>
+
+          <pre class="prettyprint">
+
+          <code >
+
+            {
+
+              "status": "Error 000",
+
+              "mensaje": "No se agrego JSON"
+
+            }
+
+
+
+            /*Para más tipos de respuestas de error, ver pestaña "Códigos Error" */
+
+          </code>
+
+          </pre>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+        </div>
+
+        <div class="tab-pane" id="f4" role="tabpanel">
+
+          <br>
+
+          <div class="row">
+
+            <div class="col-sm-2">
+
+              <h4>URL : </h4>
+
+            </div>
+
+            <div class="col-sm-3">
+
+              <p class="font-italic">abascur.cl/apiRcv/GetInfoAllUserSedentarismo</p>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-2">
+
+              <h4>MétodoHTTP : </h4>
+
+            </div>
+
+            <div class="col-sm-1">
+
+              <p class="font-italic">GET</p>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-2">
+
+              <h4>Descripción: </h4>
+
+            </div>
+
+            <div class="col-sm-4">
+
+              <p class="font-italic">Método para listar todos los usuarios registrados en Evitapp Sedentarismo</p>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-2">
+
+              <h4>Tipo aplicación: </h4>
+
+            </div>
+
+            <div class="col-sm-4">
+
+              <p class="font-italic"> Evitapp Sedentarismo</p>
+
+            </div>
+
+          </div>
+
+            <div class="row">
+
+    <div class="col-sm-3">
+
+      <div class="card">
+
+        <div class="card-block">
+
+          <h3 class="card-title">Ejemplo JSON Consulta</h3>
+
+          <pre class="prettyprint">
+
+          <code >
+
+                  /*Sin JSON*/
+
+        </code>
+
+      </pre>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-sm-7">
+
+      <div class="card">
+
+        <div class="card-block">
+
+          <h3 class="card-title">Ejemplo JSON Respuesta Éxito</h3>
+
+          <pre class="prettyprint">
+
+          <code >
+
+            {
+
+    "status": "success",
+
+    "mensaje": [
+
+      {
+
+        "rutUsuario": "11964824-6",
+
+        "nombreUsuario": "pedro",
+
+        "correoUsuario": "prossel@ucsc.cl",
+
+        "sexoUsuario": "M",
+
+        "edadUsuario": 45,
+
+        "passUsuario": "1234",
+
+        "carreraUsuario": "Ingeniería Civil Informática",
+
+        "testActivo": 0,
+
+        "rutaImgUsuario": "uploads\/img_perfil_11964824-6.jpg",
+
+        "imgBase64": "\/9j\/4AAQSkZJRgAB....", // imagen en base64  (Cortado)
+
+        "idMetafora": 14
+
+      },
+
+      {
+
+        "rutUsuario": "18291683-8",
+
+        "nombreUsuario": "Antonio Bascur Q.",
+
+        "correoUsuario": "abascur@ing.ucsc.cl",
+
+        "sexoUsuario": "M",
+
+        "edadUsuario": 26,
+
+        "passUsuario": "1234",
+
+        "carreraUsuario": "Ingeniería Civil Informática",
+
+        "testActivo": 0,
+
+        "rutaImgUsuario": "uploads\/img_perfil_18291683-8.jpg",
+
+        "imgBase64": "\/9j\/4AAQSkZJR...." // imagen en base64 (Cortado)
+
+      }]
+
+
+
+          </code>
+
+          </pre>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <div class="card-block">
+
+          <h3 class="card-title">Ejemplo JSON Respuesta Error</h3>
+
+          <pre class="prettyprint">
+
+          <code >
+
+            {
+
+              "status": "Error 000",
+
+              "mensaje": "No se agrego JSON"
+
+            }
+
+
+
+            /*Para más tipos de respuestas de error, ver pestaña "Códigos Error" */
+
+          </code>
+
+          </pre>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+        </div>
+
+      </div>
+
+
+
+<div class="tab-pane" id="f5" role="tabpanel">
+
+<br>
+
+<div class="row">
+
+  <div class="col-sm-2">
+
+    <h4>URL : </h4>
+
+  </div>
+
+  <div class="col-sm-3">
+
+    <p class="font-italic">abascur.cl/apiRcv/InsertNewActiv</p>
+
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-sm-2">
+
+    <h4>MétodoHTTP : </h4>
+
+  </div>
+
+  <div class="col-sm-1">
+
+    <p class="font-italic">POST</p>
+
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-sm-2">
+
+    <h4>Descripción: </h4>
+
+  </div>
+
+  <div class="col-sm-4">
+
+    <p class="font-italic">Método para insertar una nueva actividad de sedentarismo </p>
+
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-sm-2">
+
+    <h4>Tipo aplicación: </h4>
+
+  </div>
+
+  <div class="col-sm-4">
+
+    <p class="font-italic"> Evitapp Sedentarismo</p>
+
+  </div>
+
+</div>
+
+<div class="row">
+
+<div class="col-sm-5">
+
+<div class="card">
+
+<div class="card-block">
+
+<h3 class="card-title">Ejemplo JSON Consulta</h3>
+
+<pre class="prettyprint">
+
+<code >
+
+          {
+
+            "numMinutos": "500.0",
+
+            "frecuenciaActividad": "116.66",
+
+            "tipoApp": "sedentarismo",
+
+            "porcentajeAvance": "113.33",
+
+            "frecuenciaAcumulada": "116.66",
+
+            "rutUsuario": "18291683-8",
+
+            "fecha": "2017-11-25",
+
+            "DetalleActividad": [
+
+              {
+
+              "tipoActividad": "Trote o Caminata",
+
+              "minutosActividad": "50",
+
+              "generacion": "m"
+
+              },
+
+              {
+
+              "tipoActividad": "Rugby",
+
+              "minutosActividad": "80",
+
+              "generacion": "m"
+
+              },
+
+              {
+
+              "tipoActividad": "Trekking o Excurción",
+
+              "minutosActividad": "45",
+
+              "generacion": "m"
+
+              },
+
+              {
+
+              "tipoActividad": "Karate",
+
+              "minutosActividad": "15",
+
+              "generacion": "m"
+
+              },
+
+              {
+
+              "tipoActividad": "Bicicleta",
+
+              "minutosActividad": "15",
+
+              "generacion": "m"
+
+              },
+
+              {
+
+              "tipoActividad": "Football, Volleyball o tenis",
+
+              "minutosActividad": "90",
+
+              "generacion": "m"
+
+              },
+
+              {
+
+              "tipoActividad": "Danza aeróbica, Baile o Zumba",
+
+              "minutosActividad": "80",
+
+              "generacion": "m"
+
+              },
+
+              {
+
+              "tipoActividad": "Saltar la cuerda",
+
+              "minutosActividad": "45",
+
+              "generacion": "m"
+
+              },
+
+              {
+
+              "tipoActividad": "Pooldance",
+
+              "minutosActividad": "80",
+
+              "generacion": "m"
+
+              }
+
+            ]
+
+          }
+
+</code>
+
+</pre>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-sm-5">
+
+<div class="card">
+
+<div class="card-block">
+
+<h3 class="card-title">Ejemplo JSON Respuesta Éxito</h3>
+
+<pre class="prettyprint">
+
+<code >
+
+  {
+
+  "status": "success",
+
+  "mensaje": "Se inserto De Forma Correcta"
+
+  }
+
+</code>
+
+</pre>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-block">
+
+<h3 class="card-title">Ejemplo JSON Respuesta Error</h3>
+
+<pre class="prettyprint">
+
+<code >
+
+  {
+
+    "status": "Error 000",
+
+    "mensaje": "No se agrego JSON"
+
+  }
+
+
+
+  /*Para más tipos de respuestas de error, ver pestaña "Códigos Error" */
+
+</code>
+
+</pre>
+
+
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+
+
+
+
+    <div class="tab-pane" id="f6" role="tabpanel">
+
+    <br>
+
+    <div class="row">
+
+      <div class="col-sm-2">
+
+        <h4>URL : </h4>
+
+      </div>
+
+      <div class="col-sm-3">
+
+        <p class="font-italic">abascur.cl/apiRcv/InsertNewActiv</p>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-2">
+
+        <h4>MétodoHTTP : </h4>
+
+      </div>
+
+      <div class="col-sm-1">
+
+        <p class="font-italic">POST</p>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-2">
+
+        <h4>Descripción: </h4>
+
+      </div>
+
+      <div class="col-sm-4">
+
+        <p class="font-italic">Método para insertar una nueva actividad de tabaquismo </p>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-2">
+
+        <h4>Tipo aplicación: </h4>
+
+      </div>
+
+      <div class="col-sm-4">
+
+        <p class="font-italic">Evitapp Tabaquismo </p>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+
+    <div class="col-sm-5">
+
+    <div class="card">
+
+    <div class="card-block">
+
+    <h3 class="card-title">Ejemplo JSON Consulta</h3>
+
+    <pre class="prettyprint">
+
+    <code >
+
+              {
+
+                "numCigarros": "5",
+
+                "frecuenciaActividad": "116.66",
+
+                "tipoApp": "tabaquismo",
+
+                "porcentajeAvance": "113.33",
+
+                "frecuenciaAcumulada": "116.66",
+
+                "rutUsuario": "18291683-8",
+
+                "fecha": "2017-11-25",
+
+
+
+              }
+
+    </code>
+
+    </pre>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    <div class="col-sm-5">
+
+    <div class="card">
+
+    <div class="card-block">
+
+    <h3 class="card-title">Ejemplo JSON Respuesta Éxito</h3>
+
+    <pre class="prettyprint">
+
+    <code >
+
+      {
+
+      "status": "success",
+
+      "mensaje": "Se inserto De Forma Correcta"
+
+      }
+
+    </code>
+
+    </pre>
+
+    </div>
+
+    </div>
+
+    <div class="card">
+
+    <div class="card-block">
+
+    <h3 class="card-title">Ejemplo JSON Respuesta Error</h3>
+
+    <pre class="prettyprint">
+
+    <code >
+
+      {
+
+        "status": "Error 000",
+
+        "mensaje": "No se agrego JSON"
+
+      }
+
+
+
+      /*Para más tipos de respuestas de error, ver pestaña "Códigos Error" */
+
+    </code>
+
+    </pre>
+
+
+
+        </div>
+
+        </div>
+
+        </div>
+
+        </div>
+
+        </div>
+
+
+
+
+
+
+
+        <div class="tab-pane" id="f7" role="tabpanel">
+
+          <br>
+
+          <div class="row">
+
+            <div class="col-sm-2">
+
+              <h4>URL : </h4>
+
+            </div>
+
+            <div class="col-sm-3">
+
+              <p class="font-italic">abascur.cl/apiRcv/GetActivitiesUser</p>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-2">
+
+              <h4>MétodoHTTP : </h4>
+
+            </div>
+
+            <div class="col-sm-1">
+
+              <p class="font-italic">POST</p>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-2">
+
+              <h4>Descripción: </h4>
+
+            </div>
+
+            <div class="col-sm-4">
+
+              <p class="font-italic">Método para Obtener todas las actividades de un usuario específico</p>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-2">
+
+              <h4>Tipo aplicación: </h4>
+
+            </div>
+
+            <div class="col-sm-4">
+
+              <p class="font-italic">Evitapp Tabaquismo y Evitapp Sedentarismo</p>
+
+            </div>
+
+          </div>
+
+            <div class="row">
+
+    <div class="col-sm-4">
+
+      <div class="card">
+
+        <div class="card-block">
+
+          <h3 class="card-title">Ejemplo JSON Consulta</h3>
+
+          <pre class="prettyprint">
+
+          <code >
+
+            {
+
+            "rutUsuario":"18291683-8",
+
+            "tipoApp":"sedentarismo"
+
+            }
+
+
+
+        </code>
+
+      </pre>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-sm-6">
+
+      <div class="card">
+
+        <div class="card-block">
+
+          <h3 class="card-title">Ejemplo JSON Respuesta Éxito</h3>
+
+          <pre class="prettyprint">
+
+          <code >
+
+                {
+
+              	"status": "success",
+
+              	"mensaje": [
+
+              		{
+
+              			"rutUsuario_fk": "18291683-8",
+
+              			"minutosActividad": 25,
+
+              			"fechaActividad": "2017-11-20",
+
+              			"frecuenciaActividad": 5.83,
+
+              			"frecuenciaAcumuladaActividad": 5.83,
+
+              			"porcentajeAvanceAcumulado": 2.5
+
+              		},
+
+              		{
+
+              			"rutUsuario_fk": "18291683-8",
+
+              			"minutosActividad": 0,
+
+              			"fechaActividad": "2017-11-21",
+
+              			"frecuenciaActividad": 0,
+
+              			"frecuenciaAcumuladaActividad": 5.83,
+
+              			"porcentajeAvanceAcumulado": -0.83
+
+              		},
+
+              		{
+
+              			"rutUsuario_fk": "18291683-8",
+
+              			"minutosActividad": 0,
+
+              			"fechaActividad": "2017-11-22",
+
+              			"frecuenciaActividad": 0,
+
+              			"frecuenciaAcumuladaActividad": 5.83,
+
+              			"porcentajeAvanceAcumulado": -4.16
+
+              		}
+
+              	]
+
+              }
+
+          </code>
+
+          </pre>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <div class="card-block">
+
+          <h3 class="card-title">Ejemplo JSON Respuesta Error</h3>
+
+          <pre class="prettyprint">
+
+          <code >
+
+            {
+
+            	"status": "Error 000",
+
+            	"mensaje": "No se agrego JSON"
+
+            }
+
+
+
+            /*Para más tipos de respuestas de error, ver pestaña "Códigos Error" */
+
+          </code>
+
+          </pre>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="tab-pane" id="f9" role="tabpanel">
+
+        <br>
+
+        <div class="row">
+
+          <div class="col-sm-2">
+
+            <h4>URL : </h4>
+
+          </div>
+
+          <div class="col-sm-3">
+
+            <p class="font-italic">abascur.cl/apiRcv/InsertNewLogro</p>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-sm-2">
+
+            <h4>MétodoHTTP : </h4>
+
+          </div>
+
+          <div class="col-sm-1">
+
+            <p class="font-italic">POST</p>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-sm-2">
+
+            <h4>Descripción: </h4>
+
+          </div>
+
+          <div class="col-sm-4">
+
+            <p class="font-italic">Método para insertar una nuevo logro de Evitapp Sedentarismo </p>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-sm-2">
+
+            <h4>Tipo aplicación: </h4>
+
+          </div>
+
+          <div class="col-sm-4">
+
+            <p class="font-italic">Evitapp Sedentarismo</p>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+        <div class="col-sm-5">
+
+        <div class="card">
+
+        <div class="card-block">
+
+        <h3 class="card-title">Ejemplo JSON Consulta</h3>
+
+        <pre class="prettyprint">
+
+        <code >
+
+          {
+
+          	"rutUsuario":"18291683-8",
+
+          	"porcentajeSolicitado":"5",
+
+          	"porcentajeObtenido":"5.6",
+
+          	"fecha":"2017/11/17",
+
+          	"minutosAumentados":"50",
+
+          	"idMetafora":"9",
+
+          	"tipoApp":"sedentarismo",
+
+          	"nombreElemento":"conejo"
+
+          }
+
+
+
+        </code>
+
+        </pre>
+
+        </div>
+
+        </div>
+
+        </div>
+
+        <div class="col-sm-5">
+
+        <div class="card">
+
+        <div class="card-block">
+
+        <h3 class="card-title">Ejemplo JSON Respuesta Éxito</h3>
+
+        <pre class="prettyprint">
+
+        <code >
+
+          {
+
+          "status": "success",
+
+          "mensaje": "Se inserto De Forma Correcta"
+
+          }
+
+        </code>
+
+        </pre>
+
+        </div>
+
+        </div>
+
+        <div class="card">
+
+        <div class="card-block">
+
+        <h3 class="card-title">Ejemplo JSON Respuesta Error</h3>
+
+        <pre class="prettyprint">
+
+        <code >
+
+          {
+
+            "status": "Error 000",
+
+            "mensaje": "No se agrego JSON"
+
+          }
+
+
+
+          /*Para más tipos de respuestas de error, ver pestaña "Códigos Error" */
+
+        </code>
+
+        </pre>
+
+
+
+            </div>
+
+            </div>
+
+            </div>
+
+            </div>
+
+            </div>
+
+
+
+
+
+            <div class="tab-pane" id="f10" role="tabpanel">
+
+            <br>
+
+            <div class="row">
+
+              <div class="col-sm-2">
+
+                <h4>URL : </h4>
+
+              </div>
+
+              <div class="col-sm-3">
+
+                <p class="font-italic">abascur.cl/apiRcv/InsertNewLogro</p>
+
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-sm-2">
+
+                <h4>MétodoHTTP : </h4>
+
+              </div>
+
+              <div class="col-sm-1">
+
+                <p class="font-italic">POST</p>
+
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-sm-2">
+
+                <h4>Descripción: </h4>
+
+              </div>
+
+              <div class="col-sm-4">
+
+                <p class="font-italic">Método para insertar una nuevo logro de Evitapp Tabaquismo </p>
+
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-sm-2">
+
+                <h4>Tipo aplicación: </h4>
+
+              </div>
+
+              <div class="col-sm-4">
+
+                <p class="font-italic">Evitapp Tabaquismo </p>
+
+              </div>
+
+            </div>
+
+            <div class="row">
+
+            <div class="col-sm-5">
+
+            <div class="card">
+
+            <div class="card-block">
+
+            <h3 class="card-title">Ejemplo JSON Consulta</h3>
+
+            <pre class="prettyprint">
+
+            <code >
+
+              {
+
+              	"rutUsuario":"18291683-8",
+
+              	"porcentajeSolicitado":"5",
+
+              	"porcentajeObtenido":"5.6",
+
+              	"fecha":"2017/11/17",
+
+              	"cigarrosDisminuidos":"8",
+
+              	"idMetafora":"9",
+
+              	"tipoApp":"tabaquismo",
+
+              	"nombreElemento":"conejo"
+
+              }
+
+
+
+            </code>
+
+            </pre>
+
+            </div>
+
+            </div>
+
+            </div>
+
+            <div class="col-sm-5">
+
+            <div class="card">
+
+            <div class="card-block">
+
+            <h3 class="card-title">Ejemplo JSON Respuesta Éxito</h3>
+
+            <pre class="prettyprint">
+
+            <code >
+
+              {
+
+              "status": "success",
+
+              "mensaje": "Se inserto De Forma Correcta"
+
+              }
+
+            </code>
+
+            </pre>
+
+            </div>
+
+            </div>
+
+            <div class="card">
+
+            <div class="card-block">
+
+            <h3 class="card-title">Ejemplo JSON Respuesta Error</h3>
+
+            <pre class="prettyprint">
+
+            <code >
+
+              {
+
+                "status": "Error 000",
+
+                "mensaje": "No se agrego JSON"
+
+              }
+
+
+
+              /*Para más tipos de respuestas de error, ver pestaña "Códigos Error" */
+
+            </code>
+
+            </pre>
+
+
+
+                </div>
+
+                </div>
+
+                </div>
+
+                </div>
+
+                </div>
+
+
+
+
+
+                <div class="tab-pane" id="f11" role="tabpanel">
+
+                <br>
+
+                <div class="row">
+
+                  <div class="col-sm-2">
+
+                    <h4>URL : </h4>
+
+                  </div>
+
+                  <div class="col-sm-3">
+
+                    <p class="font-italic">abascur.cl/apiRcv/UpdateMetafora</p>
+
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-sm-2">
+
+                    <h4>MétodoHTTP : </h4>
+
+                  </div>
+
+                  <div class="col-sm-1">
+
+                    <p class="font-italic">POST</p>
+
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-sm-2">
+
+                    <h4>Descripción: </h4>
+
+                  </div>
+
+                  <div class="col-sm-4">
+
+                    <p class="font-italic">Método para modificar el nivel de la metafora</p>
+
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-sm-2">
+
+                    <h4>Tipo aplicación: </h4>
+
+                  </div>
+
+                  <div class="col-sm-4">
+
+                    <p class="font-italic">Evitapp Tabaquismo y Evitapp Sedentarismo</p>
+
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                <div class="col-sm-5">
+
+                <div class="card">
+
+                <div class="card-block">
+
+                <h3 class="card-title">Ejemplo JSON Consulta</h3>
+
+                <pre class="prettyprint">
+
+                <code >
+
+                  {
+
+                  "rutUsuario":"18291683-8",
+
+                  "tipoApp":"sedentarismo",
+
+                  "idMetafora":"20"
+
+                  }
+
+
+
+                </code>
+
+                </pre>
+
+                </div>
+
+                </div>
+
+                </div>
+
+                <div class="col-sm-5">
+
+                <div class="card">
+
+                <div class="card-block">
+
+                <h3 class="card-title">Ejemplo JSON Respuesta Éxito</h3>
+
+                <pre class="prettyprint">
+
+                <code >
+
+                  {
+
+                  "status": "success",
+
+                  "mensaje": "Se Actualizó De Forma Correcta"
+
+                  }
+
+                </code>
+
+                </pre>
+
+                </div>
+
+                </div>
+
+                <div class="card">
+
+                <div class="card-block">
+
+                <h3 class="card-title">Ejemplo JSON Respuesta Error</h3>
+
+                <pre class="prettyprint">
+
+                <code >
+
+                  {
+
+                    "status": "Error 000",
+
+                    "mensaje": "No se agrego JSON"
+
+                  }
+
+
+
+                  /*Para más tipos de respuestas de error, ver pestaña "Códigos Error" */
+
+                </code>
+
+                </pre>
+
+
+
+                    </div>
+
+                    </div>
+
+                    </div>
+
+                    </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+    </div>
+
+
+
+    </div>
+
+    </div>
+
+    </div>
+
+
+
+
+
+    <div class="tab-pane " id="codeError" role="tabpanel">
+
+
+
+  <table BORDER WIDTH="50%"  class="table table-striped table-hover">
+
+    <thead class="thead-inverse">
+
+    <tr ALIGN=center>
+
+      <th>Etiqueta</th>
+
+      <th>Código o Status</th>
+
+      <th>Mensaje</th>
+
+    </tr>
+
+  </thead>
+
+<tbody>
+
+    <tr ALIGN=center>
+
+      <td>JSON</td>
+
+      <td>Error000</td>
+
+      <td>No se agregó JSON</td>
+
+    </tr>
+
+
+
+
+
+    <tr ALIGN=center>
+
+      <td>edadUsuario</td>
+
+      <td>Error001</td>
+
+      <td>No se agregó la etiqueta edadUsuario</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>edadUsuario</td>
+
+      <td>Error002</td>
+
+      <td>La etiqueta edadUsuario debe tomar valor numerico</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>rutUsuario</td>
+
+      <td>Error003</td>
+
+      <td>No se agregó la etiqueta rutUsuario</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>rutUsuario</td>
+
+      <td>Error004</td>
+
+      <td>La etiqueta rutUsuario esta vacía</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>rutUsuario</td>
+
+      <td>Error005</td>
+
+      <td>El rutUsuario Ingresado no es Valido</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>nomreUsuario</td>
+
+      <td>Error006</td>
+
+      <td>No se agregó la etiqueta nomreUsuario</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>nomreUsuario</td>
+
+      <td>Error007</td>
+
+      <td>La etiqueta nomreUsuario esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>correoUsuario</td>
+
+      <td>Error008</td>
+
+      <td>No se agregó la etiqueta correoUsuario</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>correoUsuario</td>
+
+      <td>Error009</td>
+
+      <td>La etiqueta correoUsuario esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>contrasenaUsuario</td>
+
+      <td>Error010</td>
+
+      <td>No se agregó la etiqueta contrasenaUsuario</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>contrasenaUsuario</td>
+
+      <td>Error011</td>
+
+      <td>La etiqueta contrasenaUsuario esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>sexoUsuario</td>
+
+      <td>Error012</td>
+
+      <td>No se agregó la etiqueta sexoUsuario</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>sexoUsuario</td>
+
+      <td>Error013</td>
+
+      <td>La etiqueta sexoUsuario esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>carreraUsuario</td>
+
+      <td>Error014</td>
+
+      <td>No se agregó la etiqueta carreraUsuario</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>carreraUsuario</td>
+
+      <td>Error015</td>
+
+      <td>La etiqueta carreraUsuario esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>tipoApp</td>
+
+      <td>Error016</td>
+
+      <td>No se agregó la etiqueta tipoApp</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>tipoApp</td>
+
+      <td>Error017</td>
+
+      <td>La etiqueta tipoApp esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>NumeroCigarrosDia</td>
+
+      <td>Error018</td>
+
+      <td>No se agregó la etiqueta NumeroCigarrosDia</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>NumeroCigarrosDia</td>
+
+      <td>Error019</td>
+
+      <td>La etiqueta NumeroCigarrosDia esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>NumeroMinutosDia</td>
+
+      <td>Error020</td>
+
+      <td>No se agregó la etiqueta NumeroMinutosDia</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>NumeroMinutosDia</td>
+
+      <td>Error021</td>
+
+      <td>La etiqueta NumeroMinutosDia esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>NumeroMinutosDiaReal</td>
+
+      <td>Error022</td>
+
+      <td>No se agregó la etiqueta NumeroMinutosDiaReal</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>NumeroMinutosDiaReal</td>
+
+      <td>Error023</td>
+
+      <td>La etiqueta NumeroMinutosDiaReal esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>periodo</td>
+
+      <td>Error024</td>
+
+      <td>No se agregó la etiqueta periodo</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>periodo</td>
+
+      <td>Error025</td>
+
+      <td>La etiqueta periodo esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>frecuenciaEstimada</td>
+
+      <td>Error026</td>
+
+      <td>No se agregó la etiqueta frecuenciaEstimada</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>frecuenciaEstimada</td>
+
+      <td>Error027</td>
+
+      <td>La etiqueta frecuenciaEstimada esta vacía</td>
+
+    </tr>
+
+
+
+
+
+    <tr ALIGN=center>
+
+      <td>numCigarros</td>
+
+      <td>Error028</td>
+
+      <td>No se agregó la etiqueta numCigarros</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>numCigarros</td>
+
+      <td>Error029</td>
+
+      <td>La etiqueta numCigarros esta vacía</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>numCigarros</td>
+
+      <td>Error030</td>
+
+      <td>La etiqueta numCigarros debe tomar valor numerico</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>numMinutos</td>
+
+      <td>Error031</td>
+
+      <td>No se agregó la etiqueta numMinutos</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>numMinutos</td>
+
+      <td>Error032</td>
+
+      <td>La etiqueta numMinutos esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>DetalleActividad</td>
+
+      <td>Error033</td>
+
+      <td>No se agregó la etiqueta DetalleActividad</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>DetalleActividad</td>
+
+      <td>Error034</td>
+
+      <td>La etiqueta DetalleActividad esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>fecha</td>
+
+      <td>Error035</td>
+
+      <td>No se agregó la etiqueta fecha</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>fecha</td>
+
+      <td>Error036</td>
+
+      <td>La etiqueta fecha esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>frecuenciaActividad</td>
+
+      <td>Error037</td>
+
+      <td>No se agregó la etiqueta frecuenciaActividad</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>frecuenciaActividad</td>
+
+      <td>Error038</td>
+
+      <td>La etiqueta frecuenciaActividad esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>frecuenciaAcumulada</td>
+
+      <td>Error039</td>
+
+      <td>No se agregó la etiqueta frecuenciaAcumulada</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>frecuenciaAcumulada</td>
+
+      <td>Error040</td>
+
+      <td>La etiqueta frecuenciaAcumulada esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>porcentajeAvance</td>
+
+      <td>Error041</td>
+
+      <td>No se agregó la etiqueta porcentajeAvance</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>porcentajeAvance</td>
+
+      <td>Error042</td>
+
+      <td>La etiqueta porcentajeAvance esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>imageUser</td>
+
+      <td>Error043</td>
+
+      <td>No se agregó la etiqueta imageUser</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>imageUser</td>
+
+      <td>Error044</td>
+
+      <td>La etiqueta imageUser esta vacía</td>
+
+    </tr>
+
+
+
+
+
+    <tr ALIGN=center>
+
+      <td>DateTime</td>
+
+      <td>Error045</td>
+
+      <td>No se agregó la etiqueta DateTime</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>DateTime</td>
+
+      <td>Error046</td>
+
+      <td>La etiqueta DateTime esta vacía</td>
+
+    </tr>
+
+
+
+
+
+    <tr ALIGN=center>
+
+      <td>idMetafora</td>
+
+      <td>Error047</td>
+
+      <td>No se agregó la etiqueta idMetafora</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>idMetafora</td>
+
+      <td>Error048</td>
+
+      <td>La etiqueta idMetafora esta vacía</td>
+
+    </tr>
+
+
+
+    <tr ALIGN=center>
+
+      <td>preguntas</td>
+
+      <td>Error049</td>
+
+      <td>No se agregó la etiqueta preguntas</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>preguntas</td>
+
+      <td>Error050</td>
+
+      <td>La etiqueta preguntas esta vacía</td>
+
+    </tr>
+
+
+
+
+
+    <tr ALIGN=center>
+
+      <td>porcentajeSolicitado</td>
+
+      <td>Error051</td>
+
+      <td>No se agregó la etiqueta porcentajeSolicitado</td>
+
+    </tr>
+
+    <tr ALIGN=center>
+
+      <td>porcentajeSolicitado</td>
+
+      <td>Error052</td>
+
+      <td>La etiqueta porcentajeSolicitado esta vacía</td>
+
+    </tr>
+
+
+
+
+
+      <tr ALIGN=center>
+
+        <td>porcentajeObtenido</td>
+
+        <td>Error053</td>
+
+        <td>No se agregó la etiqueta porcentajeObtenido</td>
+
+      </tr>
+
+      <tr ALIGN=center>
+
+        <td>porcentajeObtenido</td>
+
+        <td>Error054</td>
+
+        <td>La etiqueta porcentajeObtenido esta vacía</td>
+
+      </tr>
+
+
+
+        <tr ALIGN=center>
+
+          <td>cigarrosDisminuidos</td>
+
+          <td>Error055</td>
+
+          <td>No se agregó la etiqueta cigarrosDisminuidos</td>
+
+        </tr>
+
+        <tr ALIGN=center>
+
+          <td>cigarrosDisminuidos</td>
+
+          <td>Error056</td>
+
+          <td>La etiqueta cigarrosDisminuidos esta vacía</td>
+
+        </tr>
+
+
+
+          <tr ALIGN=center>
+
+            <td>minutosAumentados</td>
+
+            <td>Error057</td>
+
+            <td>No se agregó la etiqueta minutosAumentados</td>
+
+          </tr>
+
+          <tr ALIGN=center>
+
+            <td>minutosAumentados</td>
+
+            <td>Error058</td>
+
+            <td>La etiqueta minutosAumentados esta vacía</td>
+
+          </tr>
+
+
+
+            <tr ALIGN=center>
+
+              <td>nombreElemento</td>
+
+              <td>Error059</td>
+
+              <td>No se agregó la etiqueta nombreElemento</td>
+
+            </tr>
+
+            <tr ALIGN=center>
+
+              <td>nombreElemento</td>
+
+              <td>Error060</td>
+
+              <td>La etiqueta nombreElemento esta vacía</td>
+
+            </tr>
+
+
+
+</tbody>
+
+  </table>
+
+  </div>
+
+    </div>
+
+
+
+  </body>
+
+  <footer class="footer">
+
+        <div class="container">
+
+          <span class="text-muted">Desarrollado por Antonio Bascur Q.</span>
+
+        </div>
+
+      </footer>
+
+</html>
+
