@@ -51,6 +51,7 @@ public class RegistrationPacienteActivity extends AppCompatActivity {
         prevision_salud = findViewById(R.id.edit6);
         editDireccion = findViewById(R.id.edit8);
         editOcupacion = findViewById(R.id.edit7);
+        btnGuardar = findViewById(R.id.btnguardar);
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,14 +76,10 @@ public class RegistrationPacienteActivity extends AppCompatActivity {
             editEmail.setError("Por favor Ingresa un Email ");
         } else if (TextUtils.isEmpty(fecha_nacimiento.getText().toString().trim())) {
             fecha_nacimiento.setError("Por favor Ingresa una fecha_nacimiento ");
-        } else if (TextUtils.isEmpty(editContraseña.getText().toString().trim())) {
+        } else if (TextUtils.isEmpty(prevision_salud.getText().toString().trim())) {
             prevision_salud.setError("Por favor Ingresa una prevision_salud ");
-        }
-        else if (TextUtils.isEmpty(editContraseña.getText().toString().trim())) {
-            editDireccion.setError("Por favor Ingresa una editDireccion ");
-        }
-        else if (TextUtils.isEmpty(editContraseña.getText().toString().trim())) {
-            editOcupacion.setError("Por favor Ingresa una editOcupacion ");
+        } else if (TextUtils.isEmpty(editOcupacion.getText().toString().trim())) {
+            editOcupacion.setError("Por favor Ingresa una editDireccion ");
         }
         else {
             r = true;
@@ -102,7 +99,7 @@ public class RegistrationPacienteActivity extends AppCompatActivity {
     }
 
     private void SyncbdRemote(){
-        RealmResults<Paciente> ListadoNoSync = mRealm.where(Paciente.class).equalTo("sendBD",false).findAll();
+        RealmResults<Paciente> ListadoNoSync = mRealm.where(Paciente.class).equalTo("sendBd",false).findAll();
         if(ListadoNoSync.size()>0){
             for(int i=0;i<ListadoNoSync.size();i++){
                 String nombre = ListadoNoSync.get(i).getNombre();
