@@ -16,4 +16,21 @@
     <!--String del Menú-->
     <string name="opcion1">Cerrar Sesión</string>
     <string name="opcion2">Ejemplo</string>
+    <string name="title_activity_ficha_medica">FichaMedica</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
+    <!--Strings Tabs-->
+    <string name="fichaDatosUsuario">Datos Usuario</string>
+    <string name="fichaProxima">Anamnesis Próxima</string>
+    <string name="fichaRemota">Anamnesis Remota</string>
+    <string name="fichaFisico">Exámen Físico</string>
+    <string name="fichaDiagnostico">Diagnóstico</string>
+    <string name="fichaTratamiento">Tratamiento</string>
+
+    <!--String botones fragment fichas-->
+    <string name="editUsuario">Editar Dato Usuario</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

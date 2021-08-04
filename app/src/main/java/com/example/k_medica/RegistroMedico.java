@@ -258,7 +258,10 @@ public class RegistroMedico extends AppCompatActivity {
         intent.putExtras(b);
 
         startActivity(intent);
+        this.finish();
     }
+
+
 
 
 }

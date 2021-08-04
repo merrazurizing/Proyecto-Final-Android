@@ -6,9 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
-
     <application
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,17 +14,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KMedica"
         android:usesCleartextTraffic="true">
-        <activity android:name=".InicioMedico"></activity>
+        <activity
+            android:name=".FichaMedica"
+            android:label="@string/title_activity_ficha_medica"
+            android:theme="@style/Theme.KMedica.NoActionBar"></activity>
+        <activity android:name=".InicioMedico" />
         <activity android:name=".RegistroMedico" />
         <activity android:name=".IngresoMedico" />
         <activity android:name=".LoginMedico" />
         <activity android:name=".RegistroMedicoActivity" />
         <activity android:name=".RegistrationPacienteActivity" />
         <activity android:name=".LoginActivity" />
-
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
