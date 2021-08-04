@@ -35,6 +35,7 @@ public class RegistrationPacienteActivity extends AppCompatActivity {
     private EditText editRut, editNombre, editContraseña, editEmail, editDireccion, editOcupacion, fecha_nacimiento, prevision_salud;
     private Button btnGuardar;
     Realm mRealm;
+    private String rutMedico;
 
     public static final String URL_BASE ="http://abascur.cl/android/android_5/api/";
     public static final String ACESS_ID="";
@@ -52,6 +53,9 @@ public class RegistrationPacienteActivity extends AppCompatActivity {
         editDireccion = findViewById(R.id.edit8);
         editOcupacion = findViewById(R.id.edit7);
         btnGuardar = findViewById(R.id.btnguardar);
+
+        Bundle bundle = this.getIntent().getExtras();
+        rutMedico = bundle.getString("run");
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,7 +135,7 @@ public class RegistrationPacienteActivity extends AppCompatActivity {
         params.put("fecha_nacimiento", fecha_nacimiento);
         params.put("direccion", direccion);
         params.put("ocupacion", ocupacion);
-        params.put("prevision_salud", prevision_salud);
+        params.put("previcion_salud", prevision_salud);
 
         Toast.makeText(getApplicationContext(), params.toString() , Toast.LENGTH_SHORT).show();
         String URL = URL_BASE+"InsertOrUpdatePaciente";
@@ -182,6 +186,9 @@ public class RegistrationPacienteActivity extends AppCompatActivity {
 
     public void sendInicioMedico(){
         Intent intent = new Intent(RegistrationPacienteActivity.this, InicioMedico.class);
+        Bundle b = new Bundle();
+        b.putString("run",rutMedico);
+        intent.putExtras(b);
         startActivity(intent);
     }
 }

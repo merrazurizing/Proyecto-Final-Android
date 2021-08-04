@@ -86,6 +86,9 @@ public class InicioMedico extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(InicioMedico.this, RegistrationPacienteActivity.class);
+                Bundle b = new Bundle();
+                b.putString("run",rutMedico);
+                intent.putExtras(b);
                 startActivity(intent);
                 //DialogAgregarNota(null);
             }
@@ -259,13 +262,15 @@ public class InicioMedico extends AppCompatActivity {
                     //if(run.equals(run)){
                         String nombre = jsonObject.getString("nombre");
                         String rut = jsonObject.getString("run_paciente");
+                        String correo = jsonObject.getString("correo");
                         String fecha_nacimiento = jsonObject.getString("fecha_nacimiento");
-                        String motivo_consulta = jsonObject.getString("");
-                        String prevision_salud = jsonObject.getString("precicion_salud");
+                        String direccion = jsonObject.getString("direccion");
                         String ocupacion = jsonObject.getString("ocupacion");
-                        String direccion = jsonObject.getString("email");
+                        String previcion_salud = jsonObject.getString("previcion_salud");
 
-                        Paciente usuario = new Paciente(nombre, rut, fecha_nacimiento, motivo_consulta, prevision_salud, ocupacion, direccion,true);
+
+
+                        Paciente usuario = new Paciente(nombre, rut, correo, fecha_nacimiento, previcion_salud, direccion, ocupacion,true);
 
                         listaPaciente.add(usuario);
                     //}
