@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,14 +67,12 @@ public class InicioMedico extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
 
 
-        listaPaciente = new ArrayList<Paciente>();
+        listaPaciente = new ArrayList<>();
         getPacientesMedico();
 
         Bundle bundle = this.getIntent().getExtras();
         rutMedico = bundle.getString("run");
         nombreMedico.setText(bundle.getString("nombre"));
-
-
 
         //se agregan los elementos al spinner//combobox
         String [] ubicacionOpciones = {"Hospital Clínico Regional de Concepción" , "Clínica Sanatorio Alemán","Clínica Biobío"};
@@ -260,15 +259,13 @@ public class InicioMedico extends AppCompatActivity {
                     JSONObject jsonObject = mensaje.getJSONObject(i);
                     //String run = jsonObject.getString("rutUsuario");
                     //if(run.equals(run)){
+                        String rut = jsonObject.getString("rut");
                         String nombre = jsonObject.getString("nombre");
-                        String rut = jsonObject.getString("run_paciente");
                         String correo = jsonObject.getString("correo");
                         String fecha_nacimiento = jsonObject.getString("fecha_nacimiento");
                         String direccion = jsonObject.getString("direccion");
                         String ocupacion = jsonObject.getString("ocupacion");
                         String previcion_salud = jsonObject.getString("previcion_salud");
-
-
 
                         Paciente usuario = new Paciente(nombre, rut, correo, fecha_nacimiento, previcion_salud, direccion, ocupacion,true);
 
@@ -276,6 +273,7 @@ public class InicioMedico extends AppCompatActivity {
                     //}
                 }
             }
+            System.out.println(listaPaciente.toString());
             mRealm.beginTransaction();
             mRealm.copyToRealmOrUpdate(listaPaciente);
             mRealm.commitTransaction();
@@ -287,4 +285,5 @@ public class InicioMedico extends AppCompatActivity {
         }
 
     }
+
 }

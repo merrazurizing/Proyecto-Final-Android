@@ -71,7 +71,7 @@ public class PacientesListAdapter extends RecyclerView.Adapter<PacientesListAdap
         public ViewHolder(View itemView) {
             super(itemView);
 
-            textId = itemView.findViewById(R.id.list_usuario_nombre);
+            textNombre = itemView.findViewById(R.id.list_usuario_nombre);
             botonEliminar = itemView.findViewById(R.id.list_usuario_btn_borrar);
             cv = itemView.findViewById(R.id.cardViewItem);
 
@@ -79,7 +79,6 @@ public class PacientesListAdapter extends RecyclerView.Adapter<PacientesListAdap
         }
 
         public void bind(final Paciente paciente, final OnItemClickListener listener,final int i){
-
           textNombre.setText(paciente.getNombre());
 
             /*
