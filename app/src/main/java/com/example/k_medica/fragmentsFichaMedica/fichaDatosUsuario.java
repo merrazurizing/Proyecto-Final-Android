@@ -13,6 +13,9 @@ import com.example.k_medica.R;
 import com.example.k_medica.models.Ficha;
 import com.example.k_medica.models.Paciente;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 
 public class fichaDatosUsuario extends Fragment {
 
@@ -21,17 +24,19 @@ public class fichaDatosUsuario extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private static Ficha fichaPaciente;
+    private static String idFicha;
     private static Paciente datosPaciente;
     private TextView nombrePaciente, rutPaciente, fechaNacimiento, motivoConsulta, plan,lugar,fechaConsulta;
+    private Realm mRealm;
 
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public fichaDatosUsuario(Ficha fichaPaciente) {
+    public fichaDatosUsuario(String idFicha) {
         // Required empty public constructor
-        this.fichaPaciente = fichaPaciente;
+        this.idFicha = idFicha;
     }
 
     @Override
@@ -45,6 +50,12 @@ public class fichaDatosUsuario extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_ficha_datos_usuario, container, false);
+
+        setUpRealmConfig();
+        mRealm = Realm.getDefaultInstance();
+
+        fichaPaciente = mRealm.where(Ficha.class).equalTo("id",idFicha).findFirst();
+        datosPaciente = mRealm.where(Paciente.class).equalTo("id",fichaPaciente.getUsuario_run()).findFirst();
 
         nombrePaciente = v.findViewById(R.id.fichaNombreUsuario);
         rutPaciente = v.findViewById(R.id.fichaRut);
@@ -64,7 +75,21 @@ public class fichaDatosUsuario extends Fragment {
 
         return inflater.inflate(R.layout.fragment_ficha_datos_usuario, container, false);
 
+    }
 
+    private void setUpRealmConfig() {
+
+        // Se inicializa realm
+        Realm.init(getActivity().getApplicationContext());
+
+        // Configuración por defecto en realm
+        RealmConfiguration config = new RealmConfiguration.
+                Builder().
+                deleteRealmIfMigrationNeeded().
+                build();
+        Realm.setDefaultConfiguration(config);
 
     }
+
+
 }

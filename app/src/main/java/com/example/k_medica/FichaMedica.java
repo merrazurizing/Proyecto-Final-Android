@@ -32,12 +32,14 @@ public class FichaMedica extends AppCompatActivity {
         Bundle bundle = this.getIntent().getExtras();
         int idFicha = bundle.getInt("idFicha");
 
+
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(),idFicha);
 
         ViewPager viewPager = binding.viewPager;
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
+
         FloatingActionButton fab = binding.fab;
 
         fab.setOnClickListener(new View.OnClickListener() {

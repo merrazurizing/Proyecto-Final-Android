@@ -19,6 +19,9 @@ import com.example.k_medica.fragmentsFichaMedica.fichaDatosUsuario;
 import com.example.k_medica.models.Ficha;
 import com.example.k_medica.models.FichaAnamnesisRemota;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -28,27 +31,27 @@ public class PlaceholderFragment extends Fragment {
 
     private PageViewModel pageViewModel;
     private FragmentFichaMedicaBinding binding;
+    private Realm mRealm;
 
     public static Fragment newInstance(int index, int idFicha) {
 
-        //en esta parte se debería mandar una ficah en esepcífico de la cual recuperamos lo que sea necesario
-        //de lo que sea necesario es lo que se mandaría a cada fragment, enviar el objeto completo igual es unaopacion
+        //lo que al final pasa acá es que se manda la id de la ficha y se rescata en el dato que sea
 
-        //estas son objetos que representan lo que debería ser rescatado
-        Ficha fichaUsuario = new Ficha();
+
+
         FichaAnamnesisRemota remota = new FichaAnamnesisRemota();
 
         Fragment fragment    = null;
         switch (index){
             case 1:
                 //fichaDatosUsuario
-                fragment = new fichaDatosUsuario(fichaUsuario);
+                fragment = new fichaDatosUsuario(String.valueOf(idFicha));
                 break;
             case 2:
-               fragment = new AnamnesisRemota(remota);
+               fragment = new AnamnesisRemota(String.valueOf(idFicha));
                 break;
             case 3:
-                //fichaRemota
+                //fichaproxima
                 break;
             case 4:
                 //fichaFisico
@@ -69,6 +72,7 @@ public class PlaceholderFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         pageViewModel = new ViewModelProvider(this).get(PageViewModel.class);
         int index = 1;
         if (getArguments() != null) {
@@ -100,4 +104,7 @@ public class PlaceholderFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
+
 }
