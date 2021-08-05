@@ -14,7 +14,10 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.k_medica.R;
 import com.example.k_medica.databinding.FragmentFichaMedicaBinding;
+import com.example.k_medica.fragmentsFichaMedica.AnamnesisRemota;
 import com.example.k_medica.fragmentsFichaMedica.fichaDatosUsuario;
+import com.example.k_medica.models.Ficha;
+import com.example.k_medica.models.FichaAnamnesisRemota;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -26,16 +29,23 @@ public class PlaceholderFragment extends Fragment {
     private PageViewModel pageViewModel;
     private FragmentFichaMedicaBinding binding;
 
-    public static Fragment newInstance(int index) {
+    public static Fragment newInstance(int index, int idFicha) {
+
+        //en esta parte se debería mandar una ficah en esepcífico de la cual recuperamos lo que sea necesario
+        //de lo que sea necesario es lo que se mandaría a cada fragment, enviar el objeto completo igual es unaopacion
+
+        //estas son objetos que representan lo que debería ser rescatado
+        Ficha fichaUsuario = new Ficha();
+        FichaAnamnesisRemota remota = new FichaAnamnesisRemota();
 
         Fragment fragment    = null;
         switch (index){
             case 1:
                 //fichaDatosUsuario
-                fragment = new fichaDatosUsuario();
+                fragment = new fichaDatosUsuario(fichaUsuario);
                 break;
             case 2:
-                //fichaProxima
+               fragment = new AnamnesisRemota(remota);
                 break;
             case 3:
                 //fichaRemota
