@@ -4,10 +4,10 @@
 		class bd {
 
 			protected $mysqli;
-			const LOCALHOST = 'localhost';
-			const USER = 'root';
-			const PASSWORD = '';
-			const DATABASE = 'kmedica';
+			const LOCALHOST = 'abascur.cl';
+			const USER = 'abascur_root5';
+			const PASSWORD = 'R*!yES+cA3[E';
+			const DATABASE = 'abascur_android_05';
 			const PORT = 3306;
 
 			public function __construct() {
