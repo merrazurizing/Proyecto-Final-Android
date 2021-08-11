@@ -298,6 +298,7 @@ public class InicioMedico extends AppCompatActivity {
                 }
 
                 geFichasUsuarios();
+                getAnamnesisRemota();
 
             }
             System.out.println(listaPaciente.toString());
@@ -319,7 +320,7 @@ public class InicioMedico extends AppCompatActivity {
 
         String URL = URL_BASE + "GetAllFicha";
 
-        JsonObjectRequest jsonReque = new JsonObjectRequest(Request.Method.GET, URL, null,
+        JsonObjectRequest jsonReque = new JsonObjectRequest(Request.Method.POST, URL, null,
                 new Response.Listener<JSONObject>() {
 
                     @Override
