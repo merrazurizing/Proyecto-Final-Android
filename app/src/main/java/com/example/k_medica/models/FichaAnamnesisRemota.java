@@ -10,19 +10,19 @@ public class FichaAnamnesisRemota extends RealmObject {
 
     @PrimaryKey
     private int id;
-    private String antecedentes_morbidos;
-    private String antecedentes_quirurgicos;
-    private String hospitalizaciones;
-    private String antecedentes_familiares;
-    private String alergias;
-    private String alimentacion;
-    private String fichamedica_id;
-    private boolean alcohol;
-    private boolean drogas;
-    private boolean tabaco;
-    private boolean sendBd;
+    private String antecedentes_morbidos ="";
+    private String antecedentes_quirurgicos="";
+    private String hospitalizaciones="";
+    private String antecedentes_familiares="";
+    private String alergias="";
+    private String alimentacion="";
+    private int fichamedica_id;
+    private boolean alcohol=false;
+    private boolean drogas=false;
+    private boolean tabaco=false;
+    private boolean sendBd=false;
 
-    public FichaAnamnesisRemota(int id, String antecedentes_morbidos, String antecedentes_quirurgicos, String hospitalizaciones, String antecedentes_familiares, String alergias, String alimentacion, String fichamedica_id, boolean alcohol, boolean drogas, boolean tabaco, boolean sendBd) {
+    public FichaAnamnesisRemota(int id, String antecedentes_morbidos, String antecedentes_quirurgicos, String hospitalizaciones, String antecedentes_familiares, String alergias, String alimentacion, int fichamedica_id, boolean alcohol, boolean drogas, boolean tabaco, boolean sendBd) {
         this.id = id;
         this.antecedentes_morbidos = antecedentes_morbidos;
         this.antecedentes_quirurgicos = antecedentes_quirurgicos;
@@ -37,7 +37,7 @@ public class FichaAnamnesisRemota extends RealmObject {
         this.sendBd = sendBd;
     }
 
-    public FichaAnamnesisRemota(String antecedentes_morbidos, String antecedentes_quirurgicos, String hospitalizaciones, String antecedentes_familiares, String alergias, String alimentacion, String fichamedica_id, boolean alcohol, boolean drogas, boolean tabaco, boolean sendBd) {
+    public FichaAnamnesisRemota(String antecedentes_morbidos, String antecedentes_quirurgicos, String hospitalizaciones, String antecedentes_familiares, String alergias, String alimentacion, int fichamedica_id, boolean alcohol, boolean drogas, boolean tabaco, boolean sendBd) {
         this.id = getNextKey();
         this.antecedentes_morbidos = antecedentes_morbidos;
         this.antecedentes_quirurgicos = antecedentes_quirurgicos;
@@ -114,11 +114,11 @@ public class FichaAnamnesisRemota extends RealmObject {
         this.alimentacion = alimentacion;
     }
 
-    public String getFichamedica_id() {
+    public int getFichamedica_id() {
         return fichamedica_id;
     }
 
-    public void setFichamedica_id(String fichamedica_id) {
+    public void setFichamedica_id(int fichamedica_id) {
         this.fichamedica_id = fichamedica_id;
     }
 

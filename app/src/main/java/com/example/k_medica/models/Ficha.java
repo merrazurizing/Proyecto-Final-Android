@@ -11,22 +11,22 @@ public class Ficha extends RealmObject {
 
     @PrimaryKey
     private int id;
-    private Date fecha_consulta;
-    private String motivo;
-    private String plan;
-    private String tratamiento;
-    private String diagnostico;
-    private String luagar;
-    private String medico_run;
-    private String usuario_run;
-    private String proxima;
-    private boolean sendBd;
+    private String fecha_consulta;
+    private String motivo="";
+    private String plan="";
+    private String tratamiento="";
+    private String diagnostico="";
+    private String luagar="";
+    private String medico_run="";
+    private String usuario_run="";
+    private String proxima="";
+    private boolean sendBd=false;
 
     public Ficha(){
 
     }
 
-    public Ficha(int id, Date fecha_consulta, String motivo, String plan, String tratamiento, String diagnostico, String luagar, String medico_run, String usuario_run, boolean sendBd) {
+    public Ficha(int id, String fecha_consulta, String motivo, String plan, String tratamiento, String diagnostico, String luagar, String medico_run, String usuario_run, boolean sendBd) {
         this.id = id;
         this.fecha_consulta = fecha_consulta;
         this.motivo = motivo;
@@ -38,7 +38,7 @@ public class Ficha extends RealmObject {
         this.usuario_run = usuario_run;
         this.sendBd = sendBd;
     }
-    public Ficha(Date fecha_consulta, String motivo, String plan, String tratamiento, String diagnostico, String luagar, String medico_run, String usuario_run, boolean sendBd) {
+    public Ficha(String fecha_consulta, String motivo, String plan, String tratamiento, String diagnostico, String luagar, String medico_run, String usuario_run, boolean sendBd) {
         this.id = getNextKey();
         this.fecha_consulta = fecha_consulta;
         this.motivo = motivo;
@@ -59,11 +59,11 @@ public class Ficha extends RealmObject {
         this.id = id;
     }
 
-    public Date getFecha_consulta() {
+    public String getFecha_consulta() {
         return fecha_consulta;
     }
 
-    public void setFecha_consulta(Date fecha_consulta) {
+    public void setFecha_consulta(String fecha_consulta) {
         this.fecha_consulta = fecha_consulta;
     }
 

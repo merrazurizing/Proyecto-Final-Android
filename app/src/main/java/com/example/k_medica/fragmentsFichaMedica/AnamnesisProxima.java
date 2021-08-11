@@ -51,7 +51,11 @@ public class AnamnesisProxima extends Fragment {
         setUpRealmConfig();
         mRealm = Realm.getDefaultInstance();
         ficha = mRealm.where(Ficha.class).equalTo("fichamedica_id",idFicha).findFirst();
-        textView.setText(ficha.getProxima());
+
+        if(ficha!=null){
+            textView.setText(ficha.getProxima());
+        }
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

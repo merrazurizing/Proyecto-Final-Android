@@ -44,8 +44,9 @@ public class Diagnostico extends Fragment {
 
         View v=inflater.inflate(R.layout.fragment_diagnostico, container, false);
         btn = v.findViewById(R.id.diagnostico_editar);
-        textView = v.findViewById(R.id.diagnostico_editText);
-
+        if(ficha!=null){
+            textView.setText(ficha.getProxima());
+        }
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_diagnostico, container, false);

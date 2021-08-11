@@ -43,8 +43,9 @@ public class Tratamiento extends Fragment {
 
         View v=inflater.inflate(R.layout.fragment_tratamiento, container, false);
         btn = v.findViewById(R.id.tratamiento_editar);
-        textView = v.findViewById(R.id.tratamiento_editText);
-
+        if(ficha!=null){
+            textView.setText(ficha.getProxima());
+        }
         return inflater.inflate(R.layout.fragment_tratamiento, container, false);
     }
 

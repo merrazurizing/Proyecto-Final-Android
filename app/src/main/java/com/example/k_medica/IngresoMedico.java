@@ -30,7 +30,7 @@ public class IngresoMedico extends AppCompatActivity {
     private EditText run,contrasena;
     private Button botonIngreso;
     private Realm mReal;
-    public static final String URL_BASE ="";
+    public static final String URL_BASE = "http://abascur.cl/android/android_5/API/";
     public static final String ACESS_ID="";
 
 
@@ -75,10 +75,10 @@ public class IngresoMedico extends AppCompatActivity {
     private void validarUsuario(final String run,final String contrasena) {
 
         Map<String, String> params = new HashMap<String, String>();
-        params.put("rutUsuario", run);
-        params.put("idAcceso",ACESS_ID);
+        params.put("run_medico", run);
+
         // Toast.makeText(getApplicationContext(), params.toString() , Toast.LENGTH_SHORT).show();
-        String URL = URL_BASE+"GetAllMedico";
+        String URL = URL_BASE+"GetMedico";
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
         JsonObjectRequest jsonReque = new JsonObjectRequest(Request.Method.POST, URL, new JSONObject(params),

@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,6 +26,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.k_medica.adapters.PacientesListAdapter;
+import com.example.k_medica.models.Ficha;
+import com.example.k_medica.models.FichaAnamnesisRemota;
 import com.example.k_medica.models.Paciente;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -78,6 +81,20 @@ public class InicioMedico extends AppCompatActivity {
         String [] ubicacionOpciones = {"Hospital Clínico Regional de Concepción" , "Clínica Sanatorio Alemán","Clínica Biobío"};
         ArrayAdapter<String> adapterUbicacion = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,ubicacionOpciones);
         spinnerUbicacion.setAdapter(adapterUbicacion);
+
+        spinnerUbicacion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                System.out.println("Position: "+ position);
+                System.out.println("selectedItemView: "+selectedItemView);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
 
         //se define el comportamiento del botón flotante
         //basicamente para que se puedan agregar usuarios
@@ -248,11 +265,16 @@ public class InicioMedico extends AppCompatActivity {
 
     }
 
+
+
     public void add_paciente_list_to_realm(JSONArray mensaje){
+
         listaPaciente.clear();
+
         mRealm.beginTransaction();
         mRealm.delete(Paciente.class);
         mRealm.commitTransaction();
+
         try {
             if (mensaje.length() > 0) {
                 for (int i = 0; i < mensaje.length(); i++) {
@@ -269,9 +291,14 @@ public class InicioMedico extends AppCompatActivity {
 
                         Paciente usuario = new Paciente(nombre, rut, correo, fecha_nacimiento, previcion_salud, direccion, ocupacion,true);
 
+
+
                         listaPaciente.add(usuario);
                     //}
                 }
+
+                geFichasUsuarios();
+
             }
             System.out.println(listaPaciente.toString());
             mRealm.beginTransaction();
@@ -280,10 +307,164 @@ public class InicioMedico extends AppCompatActivity {
             //mSwipeRefreshLayout.setRefreshing(false);
             adapter.updateList(listaPaciente);
             adapter.notifyDataSetChanged();
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
     }
+
+    private void geFichasUsuarios(){
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+
+        String URL = URL_BASE + "GetAllFicha";
+
+        JsonObjectRequest jsonReque = new JsonObjectRequest(Request.Method.GET, URL, null,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //Log.d("JSONPost", response.toString());
+
+                        try {
+                            String status = response.getString("status");
+
+                            JSONArray mensaje = response.getJSONArray("mensaje");
+                            if (status.equals("success")) {
+                                addFichasPacienteRealm(mensaje);
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Error no se puedo realizar la consulta", Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // VolleyLog.d("JSONPost", "Error: " + error.getMessage());
+            }
+        });
+
+        queue.add(jsonReque);
+
+    }
+
+    public void addFichasPacienteRealm(JSONArray mensaje) {
+
+        ArrayList<Ficha> listaFichas = new ArrayList<>();
+
+        mRealm.beginTransaction();
+        mRealm.delete(Ficha.class);
+        mRealm.commitTransaction();
+
+        try {
+            if (mensaje.length() > 0) {
+                for (int i = 0; i < mensaje.length(); i++) {
+                    JSONObject jsonObject = mensaje.getJSONObject(i);
+
+                    String fecha_consulta = jsonObject.getString("fecha_consulta");
+                    String motivo = jsonObject.getString("motivo");
+                    String plan = jsonObject.getString("plan");
+                    String tratamiento = jsonObject.getString("tratamiento");
+                    String diagnostico = jsonObject.getString("diagnostico");
+                    String lugar = jsonObject.getString("lugar");
+                    String medico_run = jsonObject.getString("medico_run");
+                    String usuario_run = jsonObject.getString("usuario_run");
+
+                    Ficha ficha = new Ficha(fecha_consulta, motivo, plan, tratamiento, diagnostico,  lugar, medico_run, usuario_run,true);
+                    listaFichas.add(ficha);
+                }
+            }
+
+            mRealm.beginTransaction();
+            mRealm.copyToRealmOrUpdate(listaFichas);
+            mRealm.commitTransaction();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void getAnamnesisRemota(){
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+
+        String URL = URL_BASE + "GetAllAnamnesisRemota";
+
+        JsonObjectRequest jsonReque = new JsonObjectRequest(Request.Method.GET, URL, null,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //Log.d("JSONPost", response.toString());
+
+                        try {
+                            String status = response.getString("status");
+
+                            JSONArray mensaje = response.getJSONArray("mensaje");
+                            if (status.equals("success")) {
+                                addAnamnesisRemota(mensaje);
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Error no se puedo realizar la consulta", Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // VolleyLog.d("JSONPost", "Error: " + error.getMessage());
+            }
+        });
+
+        queue.add(jsonReque);
+
+    }
+
+    public void addAnamnesisRemota(JSONArray mensaje) {
+
+        ArrayList<FichaAnamnesisRemota> listaRemota = new ArrayList<>();
+
+        mRealm.beginTransaction();
+        mRealm.delete(FichaAnamnesisRemota.class);
+        mRealm.commitTransaction();
+
+        try {
+            if (mensaje.length() > 0) {
+                for (int i = 0; i < mensaje.length(); i++) {
+                    JSONObject jsonObject = mensaje.getJSONObject(i);
+
+                    String antecedentes_morbidos = jsonObject.getString("antecedentes_morbidos");
+                    String antecedentes_quirurgicos = jsonObject.getString("antecedentes_quirurgicos");
+                    String hospitalizaciones = jsonObject.getString("hospitalizaciones");
+                    String antecedentes_familiares = jsonObject.getString("antecedentes_familiares");
+                    String alergias = jsonObject.getString("alergias");
+                    String alimentacion = jsonObject.getString("alimentacion");
+                    Boolean tabaco = jsonObject.getBoolean("tabaco");
+                    Boolean alcohol = jsonObject.getBoolean("alcohol");
+                    Boolean drogas= jsonObject.getBoolean("drogas");
+                    int fichamedica_id =jsonObject.getInt("fichamedica_id");
+
+                    FichaAnamnesisRemota remota= new FichaAnamnesisRemota( antecedentes_morbidos,  antecedentes_quirurgicos,  hospitalizaciones,  antecedentes_familiares,  alergias,  alimentacion,  fichamedica_id,  alcohol,  drogas,  tabaco,  true) ;
+                    listaRemota.add(remota);
+
+                }
+            }
+
+            mRealm.beginTransaction();
+            mRealm.copyToRealmOrUpdate(listaRemota);
+            mRealm.commitTransaction();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }

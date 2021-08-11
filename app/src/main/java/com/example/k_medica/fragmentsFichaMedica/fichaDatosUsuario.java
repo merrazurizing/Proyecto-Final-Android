@@ -65,13 +65,18 @@ public class fichaDatosUsuario extends Fragment {
         lugar = v.findViewById(R.id.fichaLugar);
         fechaConsulta = v.findViewById(R.id.fichaFechaConsulta);
 
-        nombrePaciente.setText(datosPaciente.getNombre());
-        rutPaciente.setText(datosPaciente.getRut());
-        fechaNacimiento.setText(datosPaciente.getFecha_nacimiento());
-        motivoConsulta.setText(fichaPaciente.getMotivo());
-        plan.setText(fichaPaciente.getPlan());
-        lugar.setText(fichaPaciente.getLuagar());
-        fechaConsulta.setText((CharSequence) fichaPaciente.getFecha_consulta());
+
+        if(fichaPaciente!=null && datosPaciente!=null){
+            nombrePaciente.setText(datosPaciente.getNombre());
+            rutPaciente.setText(datosPaciente.getRut());
+            fechaNacimiento.setText(datosPaciente.getFecha_nacimiento());
+            motivoConsulta.setText(fichaPaciente.getMotivo());
+            plan.setText(fichaPaciente.getPlan());
+            lugar.setText(fichaPaciente.getLuagar());
+            fechaConsulta.setText((CharSequence) fichaPaciente.getFecha_consulta());
+        }
+
+
 
         return inflater.inflate(R.layout.fragment_ficha_datos_usuario, container, false);
 

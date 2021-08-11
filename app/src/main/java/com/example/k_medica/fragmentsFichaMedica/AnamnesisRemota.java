@@ -65,16 +65,18 @@ public class AnamnesisRemota extends Fragment {
         drogas=v.findViewById(R.id.radioButton2);
         tabaco=v.findViewById(R.id.radioButton3);
 
+        if(remota!=null){
+            morbidos.setText(remota.getAntecedentes_morbidos());
+            quirurgicos.setText(remota.getAntecedentes_quirurgicos());
+            hospitalizaciones.setText(remota.getHospitalizaciones());
+            alergias.setText(remota.getAlergias());
+            alimentacion.setText(remota.getAlimentacion());
 
-        morbidos.setText(remota.getAntecedentes_morbidos());
-        quirurgicos.setText(remota.getAntecedentes_quirurgicos());
-        hospitalizaciones.setText(remota.getHospitalizaciones());
-        alergias.setText(remota.getAlergias());
-        alimentacion.setText(remota.getAlimentacion());
+            alcohol.setChecked(remota.isAlcohol());
+            drogas.setChecked(remota.isDrogas());
+            tabaco.setChecked(remota.isTabaco());
+        }
 
-        alcohol.setChecked(remota.isAlcohol());
-        drogas.setChecked(remota.isDrogas());
-        tabaco.setChecked(remota.isTabaco());
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
