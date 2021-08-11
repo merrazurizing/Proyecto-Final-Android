@@ -14,7 +14,10 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.k_medica.R;
 import com.example.k_medica.databinding.FragmentFichaMedicaBinding;
+import com.example.k_medica.fragmentsFichaMedica.AnamnesisProxima;
 import com.example.k_medica.fragmentsFichaMedica.AnamnesisRemota;
+import com.example.k_medica.fragmentsFichaMedica.Diagnostico;
+import com.example.k_medica.fragmentsFichaMedica.Tratamiento;
 import com.example.k_medica.fragmentsFichaMedica.fichaDatosUsuario;
 import com.example.k_medica.models.Ficha;
 import com.example.k_medica.models.FichaAnamnesisRemota;
@@ -32,6 +35,7 @@ public class PlaceholderFragment extends Fragment {
     private PageViewModel pageViewModel;
     private FragmentFichaMedicaBinding binding;
     private Realm mRealm;
+
 
     public static Fragment newInstance(int index, int idFicha) {
 
@@ -51,16 +55,16 @@ public class PlaceholderFragment extends Fragment {
                fragment = new AnamnesisRemota(String.valueOf(idFicha));
                 break;
             case 3:
-                //fichaproxima
+                fragment = new AnamnesisProxima(String.valueOf(idFicha));
                 break;
             case 4:
                 //fichaFisico
                 break;
             case 5:
-                //fichaDiagnostico
+                fragment = new Tratamiento(String.valueOf(idFicha));
                 break;
             case 6:
-                //fichaTratamiento
+                fragment = new Diagnostico(String.valueOf(idFicha));
                 break;
             default:
                 return null;

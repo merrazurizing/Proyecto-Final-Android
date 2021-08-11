@@ -28,7 +28,6 @@ public class FichaMedica extends AppCompatActivity {
         binding = ActivityFichaMedicaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         Bundle bundle = this.getIntent().getExtras();
         int idFicha = bundle.getInt("idFicha");
 

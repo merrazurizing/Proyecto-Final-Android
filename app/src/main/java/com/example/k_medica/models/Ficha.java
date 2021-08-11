@@ -19,6 +19,7 @@ public class Ficha extends RealmObject {
     private String luagar;
     private String medico_run;
     private String usuario_run;
+    private String proxima;
     private boolean sendBd;
 
     public Ficha(){
@@ -124,6 +125,14 @@ public class Ficha extends RealmObject {
 
     public boolean isSendBd() {
         return sendBd;
+    }
+
+    public String getProxima() {
+        return proxima;
+    }
+
+    public void setProxima(String proxima) {
+        this.proxima = proxima;
     }
 
     public void setSendBd(boolean sendBd) {
