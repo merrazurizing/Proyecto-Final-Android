@@ -51,7 +51,7 @@ public class InicioMedico extends AppCompatActivity {
 
     private ArrayList<Paciente> listaPaciente;
 
-    public static final String URL_BASE = "http://abascur.cl/android/android_5/api/";
+    public static final String URL_BASE = "http://abascur.cl/android/android_5/API/";
     public static final String ACESS_ID="";
 
     @Override

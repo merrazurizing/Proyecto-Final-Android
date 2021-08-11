@@ -77,8 +77,6 @@ public class IngresoMedico extends AppCompatActivity {
         Map<String, String> params = new HashMap<String, String>();
         params.put("rutUsuario", run);
         params.put("idAcceso",ACESS_ID);
-
-
         // Toast.makeText(getApplicationContext(), params.toString() , Toast.LENGTH_SHORT).show();
         String URL = URL_BASE+"GetAllMedico";
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());

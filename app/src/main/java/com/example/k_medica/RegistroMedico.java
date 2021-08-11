@@ -43,7 +43,7 @@ public class RegistroMedico extends AppCompatActivity {
     private Button btnRegistrar;
     Realm mRealm;
 
-    public static final String URL_BASE ="http://abascur.cl/android/android_5/api/";
+    public static final String URL_BASE ="http://abascur.cl/android/android_5/API/";
     public static final String ACESS_ID="";
 
 
@@ -87,7 +87,7 @@ public class RegistroMedico extends AppCompatActivity {
                             //Toast.makeText(getApplicationContext(),"OK",Toast.LENGTH_LONG).show();
                             //saveShared(nombre,password,run);
                             guardarEnRealm(nombre,run,contrasena,mail,especialidad,ubicacion);
-                            //sendSecondActivity(nombre,run,password);
+                            //sendSecondActivity(nombre,run,contrasena);
                         }
 
                     }else{

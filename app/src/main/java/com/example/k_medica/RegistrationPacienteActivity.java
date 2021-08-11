@@ -37,7 +37,7 @@ public class RegistrationPacienteActivity extends AppCompatActivity {
     Realm mRealm;
     private String rutMedico;
 
-    public static final String URL_BASE ="http://abascur.cl/android/android_5/api/";
+    public static final String URL_BASE ="http://abascur.cl/android/android_5/API/";
     public static final String ACESS_ID="";
 
     @Override
