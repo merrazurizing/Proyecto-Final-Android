@@ -25,7 +25,7 @@ public class AnamnesisProxima extends Fragment {
     private Button btn;
     private TextView textView;
     private Ficha ficha;
-    private boolean estado;
+    private boolean estado=false;
 
     public AnamnesisProxima(String idFicha) {
         this.idFicha = idFicha;
@@ -42,29 +42,27 @@ public class AnamnesisProxima extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.fragment_plan, container, false);
+
         btn = v.findViewById(R.id.plan_editar);
         textView = v.findViewById(R.id.plan_editText);
 
-        comportamientoInputs(estado);
+        comportamientoInputs(false);
 
 
         setUpRealmConfig();
         mRealm = Realm.getDefaultInstance();
-        ficha = mRealm.where(Ficha.class).equalTo("fichamedica_id",idFicha).findFirst();
-
-        if(ficha!=null){
-            textView.setText(ficha.getProxima());
-        }
+        //ficha = mRealm.where(Ficha.class).equalTo("fichamedica_id",idFicha).findFirst();
 
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                comportamientoInputs(estado);
+                comportamientoInputs(!estado);
+                estado = !estado;
             }
         });
 
-        return inflater.inflate(R.layout.fragment_plan, container, false);
+        return v;
     }
 
     private void setUpRealmConfig() {
@@ -88,18 +86,5 @@ public class AnamnesisProxima extends Fragment {
 
         textView.setEnabled(bol);
 
-
-        if(!bol){
-            //si bol es falso, pues se desactivó el botón y habría que guardar las cosas en realm
-            //en teoría esto puede quedar en blanco
-
-            ficha.setProxima(textView.getText().toString());
-            ficha.setSendBd(false);
-
-            mRealm.beginTransaction();
-            mRealm.insertOrUpdate(ficha);
-            mRealm.commitTransaction();
-
-        }
     }
 }

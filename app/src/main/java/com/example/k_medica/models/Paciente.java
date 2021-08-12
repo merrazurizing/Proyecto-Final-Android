@@ -15,6 +15,8 @@ public class Paciente extends RealmObject {
     private String prevision_salud;
     private String ocupacion;
     private String direccion;
+    private String ubicacion;
+
 
     /*nuevo atributo para saber si es que fue enviado o no a la bd remota*/
     private boolean sendBd;
@@ -56,6 +58,26 @@ public class Paciente extends RealmObject {
         this.id=getNextKey();
     }
 
+    public Paciente(String nombre, String rut, String correo, String fecha_nacimiento, String prevision_salud, String direccion, String ocupacion, String ubicacion,boolean sendBd) {
+        this.rut = rut;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.fecha_nacimiento = fecha_nacimiento;
+        this.prevision_salud = prevision_salud;
+        this.ocupacion = ocupacion;
+        this.direccion = direccion;
+        this.sendBd = sendBd;
+        this.ubicacion = ubicacion;
+        this.id=getNextKey();
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
     public String getNombre() {
         return nombre;
     }

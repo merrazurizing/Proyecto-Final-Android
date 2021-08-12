@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.fichaDatosUsuario, R.string.fichaProxima,/*R.string.fichaRemota,R.string.fichaFisico,R.string.fichaDiagnostico,R.string.fichaTratamiento*/};
+    private static final int[] TAB_TITLES = new int[]{R.string.fichaDatosUsuario, R.string.fichaProxima,R.string.fichaRemota,R.string.fichaDiagnostico,R.string.fichaTratamiento/*,R.string.fichaFisico*/};
     private final Context mContext;
     private int idFicha;
 

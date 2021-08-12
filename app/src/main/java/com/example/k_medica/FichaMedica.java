@@ -37,9 +37,12 @@ public class FichaMedica extends AppCompatActivity {
         ViewPager viewPager = binding.viewPager;
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
+
+        tabs.setTabMode(TabLayout.MODE_SCROLLABLE);
+
         tabs.setupWithViewPager(viewPager);
 
-        FloatingActionButton fab = binding.fab;
+        /*FloatingActionButton fab = binding.fab;
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,5 +51,6 @@ public class FichaMedica extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        */
     }
 }

@@ -68,8 +68,9 @@ public class RegistrationPacienteActivity extends AppCompatActivity {
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println(spinnerUbicacion.getSelectedItem().toString());
                 if(isFormularioValido()){
-                    guardarEnRealm(editNombre.getText().toString(), editRut.getText().toString(), editEmail.getText().toString(), fecha_nacimiento.getText().toString(), prevision_salud.getText().toString(), editDireccion.getText().toString(), editOcupacion.getText().toString());
+                    guardarEnRealm(editNombre.getText().toString(), editRut.getText().toString(), editEmail.getText().toString(), fecha_nacimiento.getText().toString(), prevision_salud.getText().toString(), editDireccion.getText().toString(), editOcupacion.getText().toString(),spinnerUbicacion.getSelectedItem().toString());
                 }
                     //saveRegistro(editRut.getText().toString(), editNombre.getText().toString(), editContraseña.getText().toString());
             }
@@ -100,10 +101,12 @@ public class RegistrationPacienteActivity extends AppCompatActivity {
         return r;
     }
 
-    private void guardarEnRealm(String nombre, String rut, String email, String fecha_nacimiento, String prevision_salud, String direccion, String ocupacion){
+    private void guardarEnRealm(String nombre, String rut, String email, String fecha_nacimiento, String prevision_salud, String direccion, String ocupacion, String ubicacion){
         mRealm = Realm.getDefaultInstance();
 
-        Paciente paciente = new Paciente(nombre, rut, email, fecha_nacimiento, prevision_salud, direccion, ocupacion, false);
+        Paciente paciente = new Paciente(nombre, rut, email, fecha_nacimiento, prevision_salud, direccion, ocupacion,false);
+        System.out.println(ubicacion);
+        paciente.setUbicacion(ubicacion);
         mRealm.beginTransaction();
         mRealm.insertOrUpdate(paciente);
         mRealm.commitTransaction();

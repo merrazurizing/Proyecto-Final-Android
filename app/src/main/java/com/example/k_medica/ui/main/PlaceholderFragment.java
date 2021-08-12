@@ -56,20 +56,20 @@ public class PlaceholderFragment extends Fragment {
             case 2:
                fragment = new AnamnesisRemota(String.valueOf(idFicha));
                 break;
-                /*
-                case 3:
-                //fragment = new AnamnesisProxima(String.valueOf(idFicha));
-                return null;
+            case 3:
+                fragment = new AnamnesisProxima(String.valueOf(idFicha));
+               break;
             case 4:
-                //fichaFisico
-                return null;
+                fragment = new Diagnostico(String.valueOf(idFicha));
+
+                break;
             case 5:
-                //fragment = new Tratamiento(String.valueOf(idFicha));
-                return null;
+                fragment = new Tratamiento(String.valueOf(idFicha));
+                break;
             case 6:
-                //fragment = new Diagnostico(String.valueOf(idFicha));
-                return null;
-            */
+
+                break;
+
             default:
                 return null;
         }

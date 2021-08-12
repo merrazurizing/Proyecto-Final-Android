@@ -87,6 +87,7 @@ public class InicioMedico extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 System.out.println("Position: "+ position);
+                listarPorHubicacion(position);
             }
 
             @Override
@@ -155,12 +156,14 @@ public class InicioMedico extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private void listarPorHubicacion(){
+    private void listarPorHubicacion(int item){
 
         listaPaciente.clear();
+        String ubicacionSeleccionada = ubicacionOpciones[item];
+        System.out.println(ubicacionSeleccionada);
+        listaPaciente = new ArrayList(mRealm.where(Paciente.class).equalTo("ubicacion",ubicacionSeleccionada).findAll());
 
-        //listaPaciente = new ArrayList(mRealm.where(Paciente.class).equalTo("usuario_run",this.runPaciente).findAll());
-
+        System.out.println(listaPaciente);
 
         adapter = new PacientesListAdapter(listaPaciente, new PacientesListAdapter.OnItemClickListener() {
 

@@ -23,7 +23,7 @@ public class Diagnostico extends Fragment {
     private Button btn;
     private TextView textView;
     private Ficha ficha;
-    private boolean estado;
+    private boolean estado=false;
 
     public Diagnostico(String idFicha) {
         this.idFicha = idFicha;
@@ -44,12 +44,21 @@ public class Diagnostico extends Fragment {
 
         View v=inflater.inflate(R.layout.fragment_diagnostico, container, false);
         btn = v.findViewById(R.id.diagnostico_editar);
-        if(ficha!=null){
-            textView.setText(ficha.getProxima());
-        }
+
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                System.out.println(estado);
+                comportamientoInputs(!estado);
+                estado = !estado;
+
+            }
+        });
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_diagnostico, container, false);
+        return v;
     }
 
     private void comportamientoInputs(boolean bol){

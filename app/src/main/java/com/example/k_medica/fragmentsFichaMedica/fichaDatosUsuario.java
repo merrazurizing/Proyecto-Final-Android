@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.k_medica.R;
@@ -27,9 +28,11 @@ public class fichaDatosUsuario extends Fragment {
     private Ficha fichaPaciente;
     private String idFicha;
     private Paciente datosPaciente;
-    private TextView nombrePaciente, rutPaciente, fechaNacimiento, motivoConsulta, plan,lugar,fechaConsulta;
+    private TextView nombrePaciente, rutPaciente, fechaNacimiento, plan,lugar,fechaConsulta;
+    private EditText motivoConsulta;
     private Realm mRealm;
     private Button btn;
+    private boolean estado =false;
 
     public fichaDatosUsuario(String idFicha) {
         System.out.println("Ficha USUARIO");
@@ -72,7 +75,7 @@ public class fichaDatosUsuario extends Fragment {
         nombrePaciente = v.findViewById(R.id.fichaNombreUsuario);
         rutPaciente = v.findViewById(R.id.fichaRut);
         fechaNacimiento = v.findViewById(R.id.fichaFechaNacimiento);
-        motivoConsulta = v.findViewById(R.id.fichaMotivoContulta);
+        motivoConsulta = v.findViewById(R.id.fichamotivoConsulta);
         plan=v.findViewById(R.id.fichaPlan);
         lugar = v.findViewById(R.id.fichaLugar);
         fechaConsulta = v.findViewById(R.id.fichaFechaConsulta);
@@ -87,7 +90,18 @@ public class fichaDatosUsuario extends Fragment {
         lugar.setText(fichaPaciente.getLuagar());
         fechaConsulta.setText((CharSequence) fichaPaciente.getFecha_consulta());
 
+        comportamientoInputs(false);
 
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                System.out.println(estado);
+                comportamientoInputs(!estado);
+                estado = !estado;
+
+            }
+        });
 
 
         return v;
@@ -108,6 +122,31 @@ public class fichaDatosUsuario extends Fragment {
         Realm.setDefaultConfiguration(config);
 
     }
+
+    private void comportamientoInputs(boolean bol){
+
+        //bol = false todo se desactiva
+        //bol = true todo se activa
+        System.out.println(bol);
+
+        motivoConsulta.setEnabled(bol);
+
+        if(this.estado){
+            //si es falso, pues se desactivó el botón y habría que guardar las cosas en realm
+            //en teoría esto puede quedar en blanco
+
+            mRealm.beginTransaction();
+            fichaPaciente.setMotivo(motivoConsulta.getText().toString());
+
+            fichaPaciente.setSendBd(false);
+
+            mRealm.insertOrUpdate(fichaPaciente);
+            mRealm.commitTransaction();
+
+        }
+
+    }
+
 
     @Override
     public void onSaveInstanceState(@NonNull @NotNull Bundle outState) {

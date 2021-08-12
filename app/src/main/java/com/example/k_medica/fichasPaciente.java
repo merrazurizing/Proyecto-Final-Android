@@ -64,6 +64,7 @@ public class fichasPaciente extends AppCompatActivity {
 
         mRealm = Realm.getDefaultInstance();
 
+
         recyclerView = findViewById(R.id.fichas_RV);
         listaFicha = new ArrayList<>();
         floatingActionButton = findViewById(R.id.ficha_floatingActionButton);
@@ -75,13 +76,12 @@ public class fichasPaciente extends AppCompatActivity {
 
         getAllfichasUsuario();
 
-        mRealm = Realm.getDefaultInstance();
+
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Ficha ficha = new Ficha( "0000-00-00", "", ""," ", "", "", runMedico, runPaciente, false);
+                Ficha ficha = new Ficha( "2021-08-11", "", ""," ", "", "", runMedico, runPaciente, false);
                 mRealm.beginTransaction();
                 mRealm.insertOrUpdate(ficha);
                 mRealm.commitTransaction();
@@ -147,7 +147,6 @@ public class fichasPaciente extends AppCompatActivity {
     private void getAllfichasUsuario() {
 
        listaFicha = new ArrayList(mRealm.where(Ficha.class).equalTo("usuario_run",this.runPaciente).findAll());
-
 
     }
 

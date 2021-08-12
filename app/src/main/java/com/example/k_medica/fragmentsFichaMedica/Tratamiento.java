@@ -18,7 +18,7 @@ import io.realm.Realm;
 
 public class Tratamiento extends Fragment {
 
-   private boolean estado;
+   private boolean estado=false;
    private String idFicha;
    private Ficha ficha;
    private TextView textView;
@@ -43,10 +43,21 @@ public class Tratamiento extends Fragment {
 
         View v=inflater.inflate(R.layout.fragment_tratamiento, container, false);
         btn = v.findViewById(R.id.tratamiento_editar);
-        if(ficha!=null){
-            textView.setText(ficha.getProxima());
-        }
-        return inflater.inflate(R.layout.fragment_tratamiento, container, false);
+
+
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                System.out.println(estado);
+                comportamientoInputs(!estado);
+                estado = !estado;
+
+            }
+        });
+
+        return v;
     }
 
     private void comportamientoInputs(boolean bol){
@@ -57,17 +68,5 @@ public class Tratamiento extends Fragment {
         textView.setEnabled(bol);
 
 
-        if(!bol){
-            //si bol es falso, pues se desactivó el botón y habría que guardar las cosas en realm
-            //en teoría esto puede quedar en blanco
-
-            ficha.setTratamiento(textView.getText().toString());
-            ficha.setSendBd(false);
-
-            mRealm.beginTransaction();
-            mRealm.insertOrUpdate(ficha);
-            mRealm.commitTransaction();
-
         }
     }
-}
