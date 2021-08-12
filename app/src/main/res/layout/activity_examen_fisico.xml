@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".fragmentsFichaMedica.AnamnesisRemota">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="600dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="600dp">
+
+            <TextView
+                android:id="@+id/remota_Titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Examen Fisico"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/remota_textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Presion Arterial"
+                app:layout_constraintStart_toStartOf="@+id/remota_Titulo"
+                app:layout_constraintTop_toBottomOf="@+id/remota_Titulo" />
+
+            <EditText
+                android:id="@+id/remota_morbidos"
+                android:layout_width="380dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:text="Presion muy alta 180"
+                android:inputType="textMultiLine"
+                app:layout_constraintStart_toStartOf="@+id/remota_textView1"
+                app:layout_constraintTop_toBottomOf="@+id/remota_textView1" />
+
+            <TextView
+                android:id="@+id/remota_textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Frecuencia Cardiaca"
+                app:layout_constraintStart_toStartOf="@+id/remota_morbidos"
+                app:layout_constraintTop_toBottomOf="@+id/remota_morbidos" />
+
+            <EditText
+                android:id="@+id/remota_quirurgicos"
+                android:layout_width="378dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:text="Menor que 80"
+                android:inputType="textMultiLine"
+                app:layout_constraintStart_toStartOf="@+id/remota_textView2"
+                app:layout_constraintTop_toBottomOf="@+id/remota_textView2" />
+
+            <TextView
+                android:id="@+id/remota_textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Segmentacion"
+                app:layout_constraintStart_toStartOf="@+id/remota_quirurgicos"
+                app:layout_constraintTop_toBottomOf="@+id/remota_quirurgicos" />
+
+            <EditText
+                android:id="@+id/remota_hospitalizaciones"
+                android:layout_width="378dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:text="Puede ser que sufra un infarto"
+                android:inputType="textMultiLine"
+                app:layout_constraintStart_toStartOf="@+id/remota_textView3"
+                app:layout_constraintTop_toBottomOf="@+id/remota_textView3" />
+
+            <Button
+                android:id="@+id/ingresoMedico_btnIngreso"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/ingreso"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/remota_hospitalizaciones" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+</FrameLayout>
