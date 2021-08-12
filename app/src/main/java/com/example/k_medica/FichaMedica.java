@@ -24,13 +24,13 @@ public class FichaMedica extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         binding = ActivityFichaMedicaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         Bundle bundle = this.getIntent().getExtras();
         int idFicha = bundle.getInt("idFicha");
 
+        System.out.println("FICHA MEDICA");
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager(),idFicha);
 

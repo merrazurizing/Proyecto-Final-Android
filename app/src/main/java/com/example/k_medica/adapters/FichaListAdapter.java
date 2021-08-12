@@ -12,32 +12,32 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.k_medica.R;
+import com.example.k_medica.models.Ficha;
 import com.example.k_medica.models.Paciente;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PacientesListAdapter extends RecyclerView.Adapter<PacientesListAdapter.ViewHolder> {
+public class FichaListAdapter extends RecyclerView.Adapter<FichaListAdapter.ViewHolder>{
 
-
-    List<Paciente> ShowList;
+    List<Ficha> ShowList;
     Context context;
     int position;
-    private OnItemClickListener itemClickListener;
+    private FichaListAdapter.OnItemClickListener itemClickListener;
 
 
-    public PacientesListAdapter(List<Paciente> showList, OnItemClickListener itemClickListener) {
+    public FichaListAdapter(List<Ficha> showList, FichaListAdapter.OnItemClickListener itemClickListener) {
         ShowList = showList;
         this.itemClickListener = itemClickListener;
     }
 
     @NonNull
     @Override
-    public PacientesListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FichaListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_paciente,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_ficha,parent,false);
 
-        ViewHolder viewHolder = new ViewHolder(view);
+        FichaListAdapter.ViewHolder viewHolder = new FichaListAdapter.ViewHolder(view);
 
         context = parent.getContext();
         position = viewType;
@@ -45,7 +45,7 @@ public class PacientesListAdapter extends RecyclerView.Adapter<PacientesListAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PacientesListAdapter.ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull FichaListAdapter.ViewHolder viewHolder, final int i) {
         /*se pasa a cada uno de los elementos el evento listener junto con el respectivo elemento*/
 
         viewHolder.bind(ShowList.get(i), itemClickListener,i);
@@ -57,7 +57,7 @@ public class PacientesListAdapter extends RecyclerView.Adapter<PacientesListAdap
         return ShowList.size();
     }
     /*Se remplaza el listado*/
-    public void updateList(ArrayList<Paciente> data) {
+    public void updateList(ArrayList<Ficha> data) {
         ShowList = data;
         notifyDataSetChanged();
     }
@@ -73,19 +73,19 @@ public class PacientesListAdapter extends RecyclerView.Adapter<PacientesListAdap
 
             textNombre = itemView.findViewById(R.id.list_ficha_id);
             botonEliminar = itemView.findViewById(R.id.list_ficha_btn_borrar);
-            cv = itemView.findViewById(R.id.ficha_cardViewItem);
+            cv = itemView.findViewById(R.id.cardViewItem);
 
 
         }
 
-        public void bind(final Paciente paciente, final OnItemClickListener listener,final int i){
-          textNombre.setText(paciente.getNombre());
+        public void bind(final Ficha ficha, final FichaListAdapter.OnItemClickListener listener, final int i){
 
+            textNombre.setText(String.valueOf(ficha.getId()));
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.OnItemClick(paciente,getAdapterPosition());
+                    listener.OnItemClick(ficha,getAdapterPosition());
 
                 }
             });
@@ -94,7 +94,7 @@ public class PacientesListAdapter extends RecyclerView.Adapter<PacientesListAdap
             botonEliminar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.OnDeleteClick(paciente, getAdapterPosition());
+                    listener.OnDeleteClick(ficha, getAdapterPosition());
 
                 }
             });
@@ -102,12 +102,13 @@ public class PacientesListAdapter extends RecyclerView.Adapter<PacientesListAdap
         }
     }
     public interface OnItemClickListener {
-        void OnItemClick(Paciente paciente, int position);
-        void OnDeleteClick(Paciente paciente, int position);
+        void OnItemClick(Ficha ficha, int position);
+        void OnDeleteClick(Ficha ficha, int position);
     }
 
     public void removeItem(int position) {
         ShowList.remove(position);
         notifyItemRemoved(position);
     }
+
 }

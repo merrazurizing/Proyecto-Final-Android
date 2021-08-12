@@ -7,6 +7,7 @@ import io.realm.annotations.PrimaryKey;
 public class Paciente extends RealmObject {
 
     @PrimaryKey
+    private int id;
     private String nombre;
     private String rut;
     private String correo;
@@ -14,7 +15,7 @@ public class Paciente extends RealmObject {
     private String prevision_salud;
     private String ocupacion;
     private String direccion;
-    private int id;
+
     /*nuevo atributo para saber si es que fue enviado o no a la bd remota*/
     private boolean sendBd;
 

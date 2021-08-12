@@ -14,10 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KMedica"
         android:usesCleartextTraffic="true">
+        <activity android:name=".fichasPaciente"></activity>
         <activity
             android:name=".FichaMedica"
             android:label="@string/title_activity_ficha_medica"
-            android:theme="@style/Theme.KMedica.NoActionBar"></activity>
+            android:theme="@style/Theme.KMedica.NoActionBar" />
         <activity android:name=".InicioMedico" />
         <activity android:name=".RegistroMedico" />
         <activity android:name=".IngresoMedico" />

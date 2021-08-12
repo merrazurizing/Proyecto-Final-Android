@@ -115,10 +115,11 @@ public class InicioMedico extends AppCompatActivity {
 
         adapter = new PacientesListAdapter(listaPaciente, new PacientesListAdapter.OnItemClickListener() {
 
-
-
-            public void OnItemClick(/*Nota_Usuario notaUsuario,*/ int position) {
-                //DialogAgregarNota(notaUsuario);
+            @Override
+            public void OnItemClick(Paciente paciente, int position) {
+                System.out.println("AGREGAR LA COSA DE LA FICHAAAAAAAAAAAAAAAA");
+                Log.i("HOLA",paciente.getNombre());
+                sendFichaActivity(paciente.getNombre(),paciente.getRut(),rutMedico);
             }
 
             @Override
@@ -152,6 +153,20 @@ public class InicioMedico extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
+    }
+
+    private void sendFichaActivity(String nombrePaciente, String runPaciente, String runMedico) {
+        Intent intent = new Intent(InicioMedico.this, fichasPaciente.class);
+
+        Bundle b =new Bundle();
+
+        b.putString("nombrePaciente", nombrePaciente);
+        b.putString("runPaciente",runPaciente);
+        b.putString("runMedico",runMedico);
+
+        intent.putExtras(b);
+
+        startActivity(intent);
     }
 
     //Metodo para mostrar y ocultar el menú
@@ -405,6 +420,7 @@ public class InicioMedico extends AppCompatActivity {
                             String status = response.getString("status");
 
                             JSONArray mensaje = response.getJSONArray("mensaje");
+
                             if (status.equals("success")) {
                                 addAnamnesisRemota(mensaje);
                             } else {

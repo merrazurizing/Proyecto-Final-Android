@@ -20,19 +20,19 @@ import org.jetbrains.annotations.NotNull;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.fichaDatosUsuario, R.string.fichaProxima,R.string.fichaRemota,R.string.fichaFisico,R.string.fichaDiagnostico,R.string.fichaTratamiento};
+    private static final int[] TAB_TITLES = new int[]{R.string.fichaDatosUsuario, R.string.fichaProxima,/*R.string.fichaRemota,R.string.fichaFisico,R.string.fichaDiagnostico,R.string.fichaTratamiento*/};
     private final Context mContext;
     private int idFicha;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm,int idFicha) {
         super(fm);
+        System.out.println("SECTION PAGE ADAPTER");
         mContext = context;
         this.idFicha = idFicha;
     }
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
+
         return PlaceholderFragment.newInstance(position + 1,this.idFicha);
     }
 
@@ -45,7 +45,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // Show 2 total pages.
-        return 6;
+        return TAB_TITLES.length;
     }
 
 

@@ -35,7 +35,7 @@ public class fichaDatosUsuario extends Fragment {
     private String mParam2;
 
     public fichaDatosUsuario(String idFicha) {
-        // Required empty public constructor
+        System.out.println("Ficha USUARIO");
         this.idFicha = idFicha;
     }
 
@@ -48,14 +48,14 @@ public class fichaDatosUsuario extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        System.out.println("FICHA USUARIO ON CREATE");
         View v=inflater.inflate(R.layout.fragment_ficha_datos_usuario, container, false);
 
         setUpRealmConfig();
         mRealm = Realm.getDefaultInstance();
 
-        fichaPaciente = mRealm.where(Ficha.class).equalTo("id",idFicha).findFirst();
-        datosPaciente = mRealm.where(Paciente.class).equalTo("id",fichaPaciente.getUsuario_run()).findFirst();
+        fichaPaciente = mRealm.where(Ficha.class).equalTo("id",Integer.valueOf(idFicha)).findFirst();
+        datosPaciente = mRealm.where(Paciente.class).equalTo("rut",fichaPaciente.getUsuario_run()).findFirst();
 
         nombrePaciente = v.findViewById(R.id.fichaNombreUsuario);
         rutPaciente = v.findViewById(R.id.fichaRut);

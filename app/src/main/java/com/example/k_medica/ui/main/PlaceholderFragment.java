@@ -42,30 +42,34 @@ public class PlaceholderFragment extends Fragment {
         //lo que al final pasa acá es que se manda la id de la ficha y se rescata en el dato que sea
 
 
+        System.out.println("FRAGMENT NEWINSTANCE");
 
-        FichaAnamnesisRemota remota = new FichaAnamnesisRemota();
+        Fragment fragment  = null;
 
-        Fragment fragment    = null;
         switch (index){
             case 1:
                 //fichaDatosUsuario
+                System.out.println("FICHA OPCIÓN");
                 fragment = new fichaDatosUsuario(String.valueOf(idFicha));
                 break;
+
             case 2:
                fragment = new AnamnesisRemota(String.valueOf(idFicha));
                 break;
-            case 3:
-                fragment = new AnamnesisProxima(String.valueOf(idFicha));
-                break;
+                /*
+                case 3:
+                //fragment = new AnamnesisProxima(String.valueOf(idFicha));
+                return null;
             case 4:
                 //fichaFisico
-                break;
+                return null;
             case 5:
-                fragment = new Tratamiento(String.valueOf(idFicha));
-                break;
+                //fragment = new Tratamiento(String.valueOf(idFicha));
+                return null;
             case 6:
-                fragment = new Diagnostico(String.valueOf(idFicha));
-                break;
+                //fragment = new Diagnostico(String.valueOf(idFicha));
+                return null;
+            */
             default:
                 return null;
         }

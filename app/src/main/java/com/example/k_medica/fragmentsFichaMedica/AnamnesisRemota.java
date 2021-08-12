@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +24,7 @@ import io.realm.RealmConfiguration;
 public class AnamnesisRemota extends Fragment {
 
     private String idFichaMedica;
-    private TextView morbidos,quirurgicos,hospitalizaciones,alergias,alimentacion;
+    private EditText morbidos,quirurgicos,hospitalizaciones,alergias,alimentacion;
     private RadioButton alcohol,drogas,tabaco;
     private FichaAnamnesisRemota remota;
     private String idFicha;
@@ -48,12 +49,12 @@ public class AnamnesisRemota extends Fragment {
         View v=inflater.inflate(R.layout.fragment_anamnesis_remota, container, false);
 
         btn = v.findViewById(R.id.remota_btn);
-        comportamientoInputs(false);
+        //comportamientoInputs(false);
 
         setUpRealmConfig();
         mRealm = Realm.getDefaultInstance();
 
-        remota = mRealm.where(FichaAnamnesisRemota.class).equalTo("fichamedica_id",idFicha).findFirst();
+        remota = mRealm.where(FichaAnamnesisRemota.class).equalTo("fichamedica_id",Integer.valueOf(idFicha)).findFirst();
 
         morbidos = v.findViewById(R.id.remota_morbidos);
         quirurgicos = v.findViewById(R.id.remota_quirurgicos);

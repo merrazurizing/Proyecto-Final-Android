@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -89,13 +90,17 @@ public class IngresoMedico extends AppCompatActivity {
 
                         try {
                             String status = response.getString("status");
-                            JSONObject mensaje = response.getJSONObject("mensaje");
+                            JSONArray snippet = response.getJSONArray("mensaje");
+                            JSONObject mensaje = snippet.getJSONObject(0);
 
                             if (status.equals("success")) {
 
-                                if(run.equals(mensaje.getString("run_medico")) && contrasena.equals(mensaje.getString("contrasena"))){
+                                System.out.println(mensaje.getString("rut"));
+                                System.out.println(mensaje.getString("contrasena"));
 
-                                    sendInicioMedico(mensaje.getString("run_medico"),mensaje.getString("nombre_medico"));
+                                if(run.equals(mensaje.getString("rut")) && contrasena.equals(mensaje.getString("contrasena"))){
+
+                                    sendInicioMedico(mensaje.getString("rut"),mensaje.getString("nombre"));
                                 }else{
                                     Toast.makeText(getApplicationContext(), "Usuario o Contraseña incorrectos", Toast.LENGTH_SHORT).show();;
                                 }
