@@ -7,7 +7,7 @@
     android:layout_marginRight="10dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewItem"
+        android:id="@+id/ficha_cardViewItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

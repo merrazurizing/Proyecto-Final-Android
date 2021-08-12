@@ -72,6 +72,7 @@ public class FichaListAdapter extends RecyclerView.Adapter<FichaListAdapter.View
             super(itemView);
 
             textNombre = itemView.findViewById(R.id.list_ficha_id);
+            textFecha = itemView.findViewById(R.id.fichaFechaConsulta);
             botonEliminar = itemView.findViewById(R.id.list_ficha_btn_borrar);
             cv = itemView.findViewById(R.id.cardViewItem);
 
@@ -81,7 +82,7 @@ public class FichaListAdapter extends RecyclerView.Adapter<FichaListAdapter.View
         public void bind(final Ficha ficha, final FichaListAdapter.OnItemClickListener listener, final int i){
 
             textNombre.setText(String.valueOf(ficha.getId()));
-
+            textFecha.setText(String.valueOf(ficha.getFecha_consulta()));
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

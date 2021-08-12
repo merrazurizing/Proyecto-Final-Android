@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/ficha_cardViewItem"
+        android:id="@+id/cardViewItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -17,7 +18,14 @@
 
             <TextView
                 android:id="@+id/list_ficha_id"
-                android:layout_width="376dp"
+                android:layout_width="176dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/fichaFechaConsulta"
+                android:layout_width="276dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="TextView" />
@@ -28,8 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
-                android:src="@drawable/ic_baseline_delete_24" />
+                app:srcCompat="@drawable/ic_baseline_delete_24" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
 </LinearLayout>
