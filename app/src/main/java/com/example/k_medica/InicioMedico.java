@@ -48,6 +48,7 @@ public class InicioMedico extends AppCompatActivity {
     private TextView nombreMedico;
     private RecyclerView recyclerView;
     private PacientesListAdapter adapter;
+    private String [] ubicacionOpciones = {"Hospital Clínico Regional de Concepción" , "Clínica Sanatorio Alemán","Clínica Biobío"};
     Realm mRealm;
 
     private String rutMedico;
@@ -78,7 +79,7 @@ public class InicioMedico extends AppCompatActivity {
         nombreMedico.setText(bundle.getString("nombre"));
 
         //se agregan los elementos al spinner//combobox
-        String [] ubicacionOpciones = {"Hospital Clínico Regional de Concepción" , "Clínica Sanatorio Alemán","Clínica Biobío"};
+
         ArrayAdapter<String> adapterUbicacion = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,ubicacionOpciones);
         spinnerUbicacion.setAdapter(adapterUbicacion);
 
@@ -86,7 +87,6 @@ public class InicioMedico extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 System.out.println("Position: "+ position);
-                System.out.println("selectedItemView: "+selectedItemView);
             }
 
             @Override
@@ -119,6 +119,53 @@ public class InicioMedico extends AppCompatActivity {
             public void OnItemClick(Paciente paciente, int position) {
                 System.out.println("AGREGAR LA COSA DE LA FICHAAAAAAAAAAAAAAAA");
                 Log.i("HOLA",paciente.getNombre());
+                sendFichaActivity(paciente.getNombre(),paciente.getRut(),rutMedico);
+            }
+
+            @Override
+            public void OnDeleteClick(Paciente paciente, int position) {
+                //Toast.makeText(getApplicationContext(),"itemDelete:"+alumno.getNombre(),Toast.LENGTH_LONG).show();
+
+                AlertDialog alertDialog = new AlertDialog.Builder(InicioMedico.this).create();
+                alertDialog.setTitle("Alerta");
+                alertDialog.setMessage("¿Esta seguro de eliminar a " + paciente.getNombre() + "?");
+                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        deletePaciente(paciente);
+                        adapter.removeItem(position);
+                        dialogInterface.dismiss();
+
+                    }
+                });
+                alertDialog.show();
+
+
+            }
+        });
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void listarPorHubicacion(){
+
+        listaPaciente.clear();
+
+        //listaPaciente = new ArrayList(mRealm.where(Paciente.class).equalTo("usuario_run",this.runPaciente).findAll());
+
+
+        adapter = new PacientesListAdapter(listaPaciente, new PacientesListAdapter.OnItemClickListener() {
+
+            @Override
+            public void OnItemClick(Paciente paciente, int position) {
                 sendFichaActivity(paciente.getNombre(),paciente.getRut(),rutMedico);
             }
 

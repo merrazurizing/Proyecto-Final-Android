@@ -159,7 +159,7 @@ public class FichaAnamnesisRemota extends RealmObject {
         try {
             Realm realm = Realm.getDefaultInstance();
             /* se consulta por el id max actual guardado*/
-            Number number = realm.where(Paciente.class).max("id");
+            Number number = realm.where(FichaAnamnesisRemota.class).max("id");
             if (number != null) {
                 return number.intValue() + 1;
             } else {

@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -36,6 +38,8 @@ public class RegistrationPacienteActivity extends AppCompatActivity {
     private Button btnGuardar;
     Realm mRealm;
     private String rutMedico;
+    private String [] ubicacionOpciones = {"Hospital Clínico Regional de Concepción" , "Clínica Sanatorio Alemán","Clínica Biobío"};
+    private Spinner spinnerUbicacion;
 
     public static final String URL_BASE ="http://abascur.cl/android/android_5/API/";
     public static final String ACESS_ID="";
@@ -53,9 +57,13 @@ public class RegistrationPacienteActivity extends AppCompatActivity {
         editDireccion = findViewById(R.id.edit8);
         editOcupacion = findViewById(R.id.edit7);
         btnGuardar = findViewById(R.id.btnguardar);
+        spinnerUbicacion = findViewById(R.id.Paciente_spinnerubicacion);
 
         Bundle bundle = this.getIntent().getExtras();
         rutMedico = bundle.getString("run");
+
+        ArrayAdapter<String> adapterUbicacion = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,ubicacionOpciones);
+        spinnerUbicacion.setAdapter(adapterUbicacion);
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override

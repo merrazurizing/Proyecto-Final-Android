@@ -23,14 +23,14 @@ import io.realm.RealmConfiguration;
 
 public class AnamnesisRemota extends Fragment {
 
-    private String idFichaMedica;
-    private EditText morbidos,quirurgicos,hospitalizaciones,alergias,alimentacion;
-    private RadioButton alcohol,drogas,tabaco;
-    private FichaAnamnesisRemota remota;
-    private String idFicha;
+    private static String idFichaMedica;
+    private static EditText morbidos,quirurgicos,hospitalizaciones,alergias,alimentacion;
+    private static RadioButton alcohol,drogas,tabaco;
+    private static FichaAnamnesisRemota remota;
+    private static String idFicha;
     private Realm mRealm;
-    private Button btn;
-    private boolean estado;
+    private static Button btn;
+    private static boolean estado=false;
 
 
     public AnamnesisRemota(String idFicha) {
@@ -47,14 +47,21 @@ public class AnamnesisRemota extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.fragment_anamnesis_remota, container, false);
-
-        btn = v.findViewById(R.id.remota_btn);
-        //comportamientoInputs(false);
-
         setUpRealmConfig();
         mRealm = Realm.getDefaultInstance();
 
         remota = mRealm.where(FichaAnamnesisRemota.class).equalTo("fichamedica_id",Integer.valueOf(idFicha)).findFirst();
+        System.out.println("Remota fichaId"+idFicha);
+        System.out.println("Remota obj:" +remota);
+        if(remota == null){
+            System.out.println("Remota es null y se creó una ficha");
+
+            remota = new FichaAnamnesisRemota( "", "", "", "", "", "", Integer.valueOf(idFicha), false, false, false, false);
+            mRealm.beginTransaction();
+            mRealm.insertOrUpdate(remota);
+            mRealm.commitTransaction();
+        }
+        btn = v.findViewById(R.id.remota_btn);
 
         morbidos = v.findViewById(R.id.remota_morbidos);
         quirurgicos = v.findViewById(R.id.remota_quirurgicos);
@@ -65,6 +72,8 @@ public class AnamnesisRemota extends Fragment {
         alcohol=v.findViewById(R.id.radioButton);
         drogas=v.findViewById(R.id.radioButton2);
         tabaco=v.findViewById(R.id.radioButton3);
+
+        comportamientoInputs(false);
 
         if(remota!=null){
             morbidos.setText(remota.getAntecedentes_morbidos());
@@ -82,12 +91,16 @@ public class AnamnesisRemota extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               comportamientoInputs(estado);
+
+                System.out.println(estado);
+                comportamientoInputs(!estado);
+                estado = !estado;
+
             }
         });
 
 
-        return inflater.inflate(R.layout.fragment_anamnesis_remota, container, false);
+        return v;
     }
 
     private void setUpRealmConfig() {
@@ -105,9 +118,10 @@ public class AnamnesisRemota extends Fragment {
     }
 
     private void comportamientoInputs(boolean bol){
-        this.estado = !bol;
+
         //bol = false todo se desactiva
         //bol = true todo se activa
+        System.out.println(bol);
 
         morbidos.setEnabled(bol);
         quirurgicos.setEnabled(bol);
@@ -118,15 +132,15 @@ public class AnamnesisRemota extends Fragment {
         alcohol.setEnabled(bol);
         tabaco.setEnabled(bol);
 
-        if(!bol){
-            //si bol es falso, pues se desactivó el botón y habría que guardar las cosas en realm
+        if(this.estado){
+            //si es falso, pues se desactivó el botón y habría que guardar las cosas en realm
             //en teoría esto puede quedar en blanco
-
-            remota.setAntecedentes_morbidos(morbidos.getText().toString());
-            remota.setAntecedentes_quirurgicos(quirurgicos.getText().toString());
-            remota.setHospitalizaciones(hospitalizaciones.getText().toString());
-            remota.setAlergias(alergias.getText().toString());
-            remota.setAlimentacion(alimentacion.getText().toString());
+            mRealm.beginTransaction();
+            remota.setAntecedentes_morbidos(String.valueOf(morbidos.getText()));
+            remota.setAntecedentes_quirurgicos(String.valueOf(quirurgicos.getText()));
+            remota.setHospitalizaciones(String.valueOf(hospitalizaciones.getText()));
+            remota.setAlergias(String.valueOf(alergias.getText()));
+            remota.setAlimentacion(String.valueOf(alimentacion.getText()));
 
             remota.setDrogas(drogas.isChecked());
             remota.setAlcohol(alcohol.isChecked());
@@ -134,11 +148,11 @@ public class AnamnesisRemota extends Fragment {
 
             remota.setSendBd(false);
 
-            mRealm.beginTransaction();
             mRealm.insertOrUpdate(remota);
             mRealm.commitTransaction();
 
         }
+
     }
 
 
